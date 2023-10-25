@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 70F7</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28909.html">70ED</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28919">Map</a></td>
+<td class="next">
+Next: <a href="28925.html">70FD</a>
+</td>
+</tr>
+</table>
+<div class="description">70F7: Put Token on Positions</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="28543.html">BRAINIAC_best_move</a>, <a href="28596.html">Alphabeta_Min</a>, <a href="28686.html">Heuristic_Min</a>, <a href="28754.html">Alphabeta_Max</a>, <a href="28844.html">Heuristic_Max</a> and <a href="27779.html">Main_Match_Loop</a>.
+</div>
+<div class="paragraph">
+Put a token on both <a href="32000.html">CYAN_POSITIONS</a> and <a href="32256.html">RED_POSITIONS</a> areas.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">$02 (FRIEND) or $7E (ENEMY)</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc"><a href="32000.html">CYAN_POSITIONS</a> token address</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PathFinder_PutToken</td>
+<td class="address-2"><span id="28919"></span>70F7</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">put token at cyan position</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28920"></span>70F8</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to corresponding <a href="32256.html">RED_POSITIONS</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28921"></span>70F9</td>
+<td class="instruction">XOR $7C</td>
+<td class="comment-1" rowspan="1">invert side</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28923"></span>70FB</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">put token at red position</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28924"></span>70FC</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28909.html">70ED</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28919">Map</a></td>
+<td class="next">
+Next: <a href="28925.html">70FD</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

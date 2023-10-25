@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 7709</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30407.html">76C7</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30473">Map</a></td>
+<td class="next">
+Next: <a href="30486.html">7716</a>
+</td>
+</tr>
+</table>
+<div class="description">7709: Clear Screen</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="31092.html">Screen_Menu</a>, <a href="27677.html">Main_Start</a> and <a href="30837.html">Screen_Last_Level</a>.
+</div>
+<div class="paragraph">
+Fill in black the whole screen area and attributes area.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Clear</td>
+<td class="address-2"><span id="30473"></span>7709</td>
+<td class="instruction">LD HL,$4000</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to start of the screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30476"></span>770C</td>
+<td class="instruction">LD DE,$4001</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to next byte of the screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30479"></span>770F</td>
+<td class="instruction">LD (HL),L</td>
+<td class="comment-1" rowspan="1">set first pixel-byte in black</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30480"></span>7710</td>
+<td class="instruction">LD BC,$1AFF</td>
+<td class="comment-1" rowspan="1">length of screen area (-1 already set) + attributes area</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30483"></span>7713</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">fill the rest of screen area and attributes area in black</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30485"></span>7715</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30407.html">76C7</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30473">Map</a></td>
+<td class="next">
+Next: <a href="30486.html">7716</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

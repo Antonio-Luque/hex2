@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 7875</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30779.html">783B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30837">Map</a></td>
+<td class="next">
+Next: <a href="30955.html">78EB</a>
+</td>
+</tr>
+</table>
+<div class="description">7875: Show Last Level Screen</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="27677.html#27699">Main_New_Level</a>.
+</div>
+<div class="paragraph">
+Show last level screen and wait for a new game level to restart game.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Last_Level</td>
+<td class="address-2"><span id="30837"></span>7875</td>
+<td class="instruction">LD DE,$683C</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points <a href="26496.html#26684">STR_PRESSKEY</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30840"></span>7878</td>
+<td class="instruction">LD HL,$50AD</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to string screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30843"></span>787B</td>
+<td class="instruction">CALL <a href="28505.html">Print_String</a></td>
+<td class="comment-1" rowspan="1">print "Press any key"</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30846"></span>787E</td>
+<td class="instruction">LD IX,$5AAD</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to string attributes address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30850"></span>7882</td>
+<td class="instruction">LD BC,$0D38</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=string length (loop counter), <span class="register">C</span>=WHITE PAPER</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30853"></span>7885</td>
+<td class="instruction">CALL <a href="30779.html#30829">Screen_Apply_Color_Loop</a></td>
+<td class="comment-1" rowspan="1">apply color to string area</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30856"></span>7888</td>
+<td class="instruction">CALL <a href="28357.html">Input_Key_Scan</a></td>
+<td class="comment-1" rowspan="1">wait for a key pressed</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30859"></span>788B</td>
+<td class="instruction">CALL <a href="30473.html">Screen_Clear</a></td>
+<td class="comment-1" rowspan="1">fill in black the whole screen area and attributes area</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30862"></span>788E</td>
+<td class="instruction">CALL <a href="31822.html">Screen_Hexagons</a></td>
+<td class="comment-1" rowspan="1">draw menu hexagons ("HEX 2")</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30865"></span>7891</td>
+<td class="instruction">LD IX,$59C7</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to "CONGRATULATIONS" attributes address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30869"></span>7895</td>
+<td class="instruction">LD BC,$11C7</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=string length (loop counter), <span class="register">C</span>=FLASH+WHITE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30872"></span>7898</td>
+<td class="instruction">CALL <a href="30779.html#30829">Screen_Apply_Color_Loop</a></td>
+<td class="comment-1" rowspan="1">apply color to string area</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30875"></span>789B</td>
+<td class="instruction">LD DE,$68B4</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="26496.html#26804">STR_CONGRATS</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30878"></span>789E</td>
+<td class="instruction">LD HL,$48C7</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to string screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30881"></span>78A1</td>
+<td class="instruction">CALL <a href="28505.html">Print_String</a></td>
+<td class="comment-1" rowspan="1">print "CONGRATULATIONS"</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30884"></span>78A4</td>
+<td class="instruction">LD IX,$64EF</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to <a href="25831.html#25839">WINNER_FX</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30888"></span>78A8</td>
+<td class="instruction">CALL <a href="30407.html">Sound_FX</a></td>
+<td class="comment-1" rowspan="1">play sound fx</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30891"></span>78AB</td>
+<td class="instruction">DI</td>
+<td class="comment-1" rowspan="1">disable interrupts</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30892"></span>78AC</td>
+<td class="instruction">LD IX,$5A42</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to "Well done!..." string attributes address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30896"></span>78B0</td>
+<td class="instruction">LD BC,$1C07</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=string length (loop counter), <span class="register">C</span>=WHITE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30899"></span>78B3</td>
+<td class="instruction">CALL <a href="30779.html#30829">Screen_Apply_Color_Loop</a></td>
+<td class="comment-1" rowspan="1">apply color to string area</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30902"></span>78B6</td>
+<td class="instruction">LD DE,$68C6</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points <a href="26496.html#26822">STR_LAST_LEVEL</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30905"></span>78B9</td>
+<td class="instruction">LD HL,$5042</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to string screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30908"></span>78BC</td>
+<td class="instruction">CALL <a href="28505.html">Print_String</a></td>
+<td class="comment-1" rowspan="1">print "Well done!..."</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30911"></span>78BF</td>
+<td class="instruction">LD IXl,$82</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to "Choose..." string attributes address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30914"></span>78C2</td>
+<td class="instruction">LD B,$18</td>
+<td class="comment-1" rowspan="1">string length-4 (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30916"></span>78C4</td>
+<td class="instruction">CALL <a href="30779.html#30829">Screen_Apply_Color_Loop</a></td>
+<td class="comment-1" rowspan="1">apply color to string area</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30919"></span>78C7</td>
+<td class="instruction">LD (IX+$01),$78</td>
+<td class="comment-1" rowspan="3">set BRIGHT+WHITE PAPER for last characters ("1-4")</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30923"></span>78CB</td>
+<td class="instruction">LD (IX+$02),$78</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30927"></span>78CF</td>
+<td class="instruction">LD (IX+$03),$78</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30931"></span>78D3</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">move <span class="register">DE</span> to <a href="26496.html#26822">STR_LAST_LEVEL</a>+29 address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30932"></span>78D4</td>
+<td class="instruction">LD L,$82</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to string screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30934"></span>78D6</td>
+<td class="instruction">CALL <a href="28505.html">Print_String</a></td>
+<td class="comment-1" rowspan="1">print "Choose..."</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Choose_Level</td>
+<td class="address-2"><span id="30937"></span>78D9</td>
+<td class="instruction">CALL <a href="28357.html">Input_Key_Scan</a></td>
+<td class="comment-1" rowspan="1">wait for a key pressed</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30940"></span>78DC</td>
+<td class="instruction">CP $31</td>
+<td class="comment-1" rowspan="1">is it &lt; '1' ?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30942"></span>78DE</td>
+<td class="instruction">JR C,<a href="30837.html#30937">Screen_Choose_Level</a></td>
+<td class="comment-1" rowspan="1">yes, wait for a key pressed</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30944"></span>78E0</td>
+<td class="instruction">CP $35</td>
+<td class="comment-1" rowspan="1">is it &gt;= '5' ?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30946"></span>78E2</td>
+<td class="instruction">JR NC,<a href="30837.html#30937">Screen_Choose_Level</a></td>
+<td class="comment-1" rowspan="1">yes, wait for a key pressed</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30948"></span>78E4</td>
+<td class="instruction">SUB $31</td>
+<td class="comment-1" rowspan="1">convert ASCII into level number (-1)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30950"></span>78E6</td>
+<td class="instruction">LD HL,$619D</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points <a href="24989.html">GAME_LEVEL</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30953"></span>78E9</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">save chosen game level (-1)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30954"></span>78EA</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30779.html">783B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30837">Map</a></td>
+<td class="next">
+Next: <a href="30955.html">78EB</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

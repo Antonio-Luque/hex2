@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 6C1D</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27648.html">6C00</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27677">Map</a></td>
+<td class="next">
+Next: <a href="27723.html">6C4B</a>
+</td>
+</tr>
+</table>
+<div class="description">6C1D: Start New Game</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+The routine at <a href="27648.html">Main_Entry</a> continues here.
+</div>
+<div class="paragraph">
+Start a new game.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Main_Start</td>
+<td class="address-2"><span id="27677"></span>6C1D</td>
+<td class="instruction">CALL <a href="30473.html">Screen_Clear</a></td>
+<td class="comment-1" rowspan="1">fill in black the whole screen area and attributes area</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27680"></span>6C20</td>
+<td class="instruction">CALL <a href="30486.html">Screen_Letters</a></td>
+<td class="comment-1" rowspan="1">draw the two rows of letters on the screen (a..g)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27683"></span>6C23</td>
+<td class="instruction">CALL <a href="30530.html">Screen_Numbers</a></td>
+<td class="comment-1" rowspan="1">draw the two columns of numbers on the screen (1..7)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27686"></span>6C26</td>
+<td class="instruction">CALL <a href="30593.html">Screen_Frame</a></td>
+<td class="comment-1" rowspan="1">draw the screen frame</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27689"></span>6C29</td>
+<td class="instruction">CALL <a href="30681.html">Screen_Tokens</a></td>
+<td class="comment-1" rowspan="1">draw the fixed tokens on the screen</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27692"></span>6C2C</td>
+<td class="instruction">CALL <a href="30712.html">Screen_Timer_Quotes</a></td>
+<td class="comment-1" rowspan="1">draw the timer quotes (' ") on the screen</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27695"></span>6C2F</td>
+<td class="instruction">CALL <a href="30779.html">Screen_Color_Statics</a></td>
+<td class="comment-1" rowspan="1">apply color to statics items of the screen</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27698"></span>6C32</td>
+<td class="instruction">EI</td>
+<td class="comment-1" rowspan="1">enable interrupts</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="27699"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="27833.html">Main_Match_End</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Main_New_Level</td>
+<td class="address-2"><span id="27699"></span>6C33</td>
+<td class="instruction">LD A,$04</td>
+<td class="comment-1" rowspan="1">maximum level</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27701"></span>6C35</td>
+<td class="instruction">LD HL,$619D</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to <a href="24989.html">GAME_LEVEL</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27704"></span>6C38</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">level 4 achieved?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27705"></span>6C39</td>
+<td class="instruction">JR NZ,<a href="27677.html#27712">Main_Increment_Level</a></td>
+<td class="comment-1" rowspan="1">no, increment game level</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27707"></span>6C3B</td>
+<td class="instruction">CALL <a href="30837.html">Screen_Last_Level</a></td>
+<td class="comment-1" rowspan="1">show last level screen and input game level</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27710"></span>6C3E</td>
+<td class="instruction">JR <a href="27677.html#27677">Main_Start</a></td>
+<td class="comment-1" rowspan="1">start a new game</td>
+</tr>
+<tr>
+<td class="asm-label">Main_Increment_Level</td>
+<td class="address-2"><span id="27712"></span>6C40</td>
+<td class="instruction">INC (HL)</td>
+<td class="comment-1" rowspan="1">increment game level</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27713"></span>6C41</td>
+<td class="instruction">CALL <a href="31000.html">Screen_Frame_Color</a></td>
+<td class="comment-1" rowspan="1">set up frame color depending on current level</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27716"></span>6C44</td>
+<td class="instruction">CALL <a href="30983.html">Screen_Clear_ThreeRow</a></td>
+<td class="comment-1" rowspan="1">clear all three-in-a-row marks</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27719"></span>6C47</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=0</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27720"></span>6C48</td>
+<td class="instruction">LD ($620F),A</td>
+<td class="comment-1" rowspan="1">initialize <a href="25103.html">THREE_ROW</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="comments">
+<div class="paragraph">
+This routine continues into <a href="27723.html">Main_Start_Match</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27648.html">6C00</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27677">Map</a></td>
+<td class="next">
+Next: <a href="27723.html">6C4B</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

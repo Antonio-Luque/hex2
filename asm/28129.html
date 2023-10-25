@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 6DE1</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28119.html">6DD7</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28129">Map</a></td>
+<td class="next">
+Next: <a href="28148.html">6DF4</a>
+</td>
+</tr>
+</table>
+<div class="description">6DE1: Draw Hexagon Sprite</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="31859.html">Screen_Hexagons_Loop</a>, <a href="28065.html">Draw_Board</a>, <a href="30681.html">Screen_Tokens</a> and <a href="28092.html">Draw_Token</a>.
+</div>
+<div class="paragraph">
+Draw an hexagon sprite on the screen.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">DE</td>
+<td class="register-desc">Hexagon sprite address</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Hexagon screen address</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">DE</td>
+<td class="register-desc">Next hexagon sprite address</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Draw_Sprite_Hexagon</td>
+<td class="address-2"><span id="28129"></span>6DE1</td>
+<td class="instruction">LD IXl,$10</td>
+<td class="comment-1" rowspan="1">hexagon sprite height in bytes (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label">Draw_Sprite_HexLoop</td>
+<td class="address-2"><span id="28132"></span>6DE4</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">get sprite byte</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28133"></span>6DE5</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">put sprite byte on screen</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28134"></span>6DE6</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">move <span class="register">DE</span> to next sprite byte address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28135"></span>6DE7</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to next screen column</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28136"></span>6DE8</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">get sprite byte</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28137"></span>6DE9</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">put sprite byte on screen</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28138"></span>6DEA</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">move <span class="register">DE</span> to next sprite byte</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28139"></span>6DEB</td>
+<td class="instruction">DEC L</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to previous screen column</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28140"></span>6DEC</td>
+<td class="instruction">CALL <a href="28160.html">Draw_Down_PixelLine</a></td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> down one pixel-line</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28143"></span>6DEF</td>
+<td class="instruction">DEC IXl</td>
+<td class="comment-1" rowspan="1">decrement sprite height</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28145"></span>6DF1</td>
+<td class="instruction">JR NZ,<a href="28129.html#28132">Draw_Sprite_HexLoop</a></td>
+<td class="comment-1" rowspan="1">repeat for each byte in sprite</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28147"></span>6DF3</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28119.html">6DD7</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28129">Map</a></td>
+<td class="next">
+Next: <a href="28148.html">6DF4</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

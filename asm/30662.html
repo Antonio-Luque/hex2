@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 77C6</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30593.html">7781</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30662">Map</a></td>
+<td class="next">
+Next: <a href="30681.html">77D9</a>
+</td>
+</tr>
+</table>
+<div class="description">77C6: Draw Vertical Bars</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="30593.html">Screen_Frame</a>.
+</div>
+<div class="paragraph">
+Draw the vertical bars of the frame on the screen.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Vertical_Bars</td>
+<td class="address-2"><span id="30662"></span>77C6</td>
+<td class="instruction">LD HL,$4020</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to left bar screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30665"></span>77C9</td>
+<td class="instruction">CALL <a href="30662.html#30671">Screen_Vertical_Bar</a></td>
+<td class="comment-1" rowspan="1">draw left bar</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30668"></span>77CC</td>
+<td class="instruction">LD HL,$403F</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to right bar screen address</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Vertical_Bar</td>
+<td class="address-2"><span id="30671"></span>77CF</td>
+<td class="instruction">LD B,$B0</td>
+<td class="comment-1" rowspan="1">number of pixel lines (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Vertical_Loop</td>
+<td class="address-2"><span id="30673"></span>77D1</td>
+<td class="instruction">LD (HL),$3C</td>
+<td class="comment-1" rowspan="1">draw pixel byte of bar (00111100)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30675"></span>77D3</td>
+<td class="instruction">CALL <a href="28160.html">Draw_Down_PixelLine</a></td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to the next pixel-line address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30678"></span>77D6</td>
+<td class="instruction">DJNZ <a href="30662.html#30673">Screen_Vertical_Loop</a></td>
+<td class="comment-1" rowspan="1">repeat for each pixel line</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30680"></span>77D8</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30593.html">7781</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30662">Map</a></td>
+<td class="next">
+Next: <a href="30681.html">77D9</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

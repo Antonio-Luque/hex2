@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 6E2B</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28175.html">6E0F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28203">Map</a></td>
+<td class="next">
+Next: <a href="28357.html">6EC5</a>
+</td>
+</tr>
+</table>
+<div class="description">6E2B: Input Player Move</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="27958.html">Main_GetPlayer_Move</a>.
+</div>
+<div class="paragraph">
+This routine handles the keyboard input of the player's move.
+</div>
+<div class="paragraph">
+- prints the input cursor for the move in his corresponding location, according to the current token color
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Input_Move</td>
+<td class="address-2"><span id="28203"></span>6E2B</td>
+<td class="instruction">LD BC,$0200</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=maximum of input chars, <span class="register">C</span>=chars counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28206"></span>6E2E</td>
+<td class="instruction">LD IX,$5A83</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to attribute address of red input text</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28210"></span>6E32</td>
+<td class="instruction">LD HL,$5083</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to screen address of red input text</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28213"></span>6E35</td>
+<td class="instruction">LD A,($619E)</td>
+<td class="comment-1" rowspan="1">check <a href="24990.html">TOKEN_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28216"></span>6E38</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="1">is red the current token color?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28218"></span>6E3A</td>
+<td class="instruction">JR Z,<a href="28203.html#28227">Input_Start</a></td>
+<td class="comment-1" rowspan="1">yes, start input</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28220"></span>6E3C</td>
+<td class="instruction">LD IX,$5919</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to attribute address of cyan input text</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28224"></span>6E40</td>
+<td class="instruction">LD HL,$4819</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to screen address of cyan input text</td>
+</tr>
+<tr>
+<td class="asm-label">Input_Start</td>
+<td class="address-2"><span id="28227"></span>6E43</td>
+<td class="instruction">LD (IX+$00),$C7</td>
+<td class="comment-1" rowspan="1">set attributes for cursor (FLASH+WHITE)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28231"></span>6E47</td>
+<td class="instruction">LD A,$5F</td>
+<td class="comment-1" rowspan="1">text input cursor ('_')</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28233"></span>6E49</td>
+<td class="instruction">CALL <a href="28517.html">Print_Char</a></td>
+<td class="comment-1" rowspan="1">print cursor</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28236"></span>
+<div class="comments">
+<div class="paragraph">
+- start an input loop until player complete the move and press ENTER
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Input_Loop</td>
+<td class="address-2"><span id="28236"></span>6E4C</td>
+<td class="instruction">CALL <a href="28357.html">Input_Key_Scan</a></td>
+<td class="comment-1" rowspan="1">scan for a key pressed</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28239"></span>6E4F</td>
+<td class="instruction">CP $0D</td>
+<td class="comment-1" rowspan="1">is it ENTER?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28241"></span>6E51</td>
+<td class="instruction">JR Z,<a href="28203.html#28343">Input_Enter</a></td>
+<td class="comment-1" rowspan="1">yes, perform enter pressed</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28243"></span>6E53</td>
+<td class="instruction">CP $30</td>
+<td class="comment-1" rowspan="1">is it "delete"? (char '0' acts as delete, without Shift)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28245"></span>6E55</td>
+<td class="instruction">JR Z,<a href="28203.html#28313">Input_Delete</a></td>
+<td class="comment-1" rowspan="1">yes, perform delete char</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28247"></span>6E57</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">store char in <span class="register">A'</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28248"></span>6E58</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">check number of chars inserted</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28249"></span>6E59</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">chars limit reached?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28250"></span>6E5A</td>
+<td class="instruction">JR Z,<a href="28203.html#28236">Input_Loop</a></td>
+<td class="comment-1" rowspan="1">yes, repeat input loop</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28252"></span>6E5C</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is it the first char?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28253"></span>6E5D</td>
+<td class="instruction">JR NZ,<a href="28203.html#28288">Input_Numbers</a></td>
+<td class="comment-1" rowspan="1">no, perform input of 2nd char</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28255"></span>
+<div class="comments">
+<div class="paragraph">
+- restrict first char to 'a'-'g'
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28255"></span>6E5F</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">restore char</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28256"></span>6E60</td>
+<td class="instruction">CP $61</td>
+<td class="comment-1" rowspan="1">is it &lt; 'a'?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28258"></span>6E62</td>
+<td class="instruction">JR C,<a href="28203.html#28236">Input_Loop</a></td>
+<td class="comment-1" rowspan="1">yes, repeat input loop (char is not allowed)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28260"></span>6E64</td>
+<td class="instruction">CP $68</td>
+<td class="comment-1" rowspan="1">is it &gt;= 'g'?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28262"></span>6E66</td>
+<td class="instruction">JR NC,<a href="28203.html#28236">Input_Loop</a></td>
+<td class="comment-1" rowspan="1">yes, repeat input loop (char is not allowed)</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28264"></span>
+<div class="comments">
+<div class="paragraph">
+- char is valid as column
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28264"></span>6E68</td>
+<td class="instruction">LD ($6216),A</td>
+<td class="comment-1" rowspan="1">save char at <a href="25110.html">STR_MOVE</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28267"></span>6E6B</td>
+<td class="instruction">LD (IX+$00),$47</td>
+<td class="comment-1" rowspan="1">restore attributes (BRIGHT+WHITE)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28271"></span>6E6F</td>
+<td class="instruction">CALL <a href="28517.html">Print_Char</a></td>
+<td class="comment-1" rowspan="1">print key pressed</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28274"></span>6E72</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1">increment chars counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28275"></span>6E73</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">increment X position of current input screen location</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28276"></span>6E74</td>
+<td class="instruction">INC IXl</td>
+<td class="comment-1" rowspan="1">increment X position of current input attributes location</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28278"></span>6E76</td>
+<td class="instruction">LD A,$2D</td>
+<td class="comment-1" rowspan="1">set dash char ('-')</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28280"></span>6E78</td>
+<td class="instruction">CALL <a href="28517.html">Print_Char</a></td>
+<td class="comment-1" rowspan="1">print key pressed</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28283"></span>6E7B</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">increment X position of current input screen location</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28284"></span>6E7C</td>
+<td class="instruction">INC IXl</td>
+<td class="comment-1" rowspan="1">increment X position of current input attr location</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28286"></span>6E7E</td>
+<td class="instruction">JR <a href="28203.html#28227">Input_Start</a></td>
+<td class="comment-1" rowspan="1">get next char (do until ENTER is pressed)</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28288"></span>
+<div class="comments">
+<div class="paragraph">
+- restrict second char to '1'-'7'
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Input_Numbers</td>
+<td class="address-2"><span id="28288"></span>6E80</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">restore char</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28289"></span>6E81</td>
+<td class="instruction">CP $31</td>
+<td class="comment-1" rowspan="1">is it &lt; '1'?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28291"></span>6E83</td>
+<td class="instruction">JR C,<a href="28203.html#28236">Input_Loop</a></td>
+<td class="comment-1" rowspan="1">yes, repeat input loop (char is not allowed)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28293"></span>6E85</td>
+<td class="instruction">CP $38</td>
+<td class="comment-1" rowspan="1">is it &gt;= '8'?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28295"></span>6E87</td>
+<td class="instruction">JR NC,<a href="28203.html#28236">Input_Loop</a></td>
+<td class="comment-1" rowspan="1">yes, repeat input loop (char is not allowed)</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28297"></span>
+<div class="comments">
+<div class="paragraph">
+- char is valid as row
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28297"></span>6E89</td>
+<td class="instruction">LD ($6219),A</td>
+<td class="comment-1" rowspan="1">save char at <a href="25110.html">STR_MOVE</a>+3</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28300"></span>6E8C</td>
+<td class="instruction">LD (IX+$00),$47</td>
+<td class="comment-1" rowspan="1">restore attributes (BRIGHT+WHITE)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28304"></span>6E90</td>
+<td class="instruction">CALL <a href="28517.html">Print_Char</a></td>
+<td class="comment-1" rowspan="1">print key pressed</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28307"></span>6E93</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1">increment chars counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28308"></span>6E94</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">increment X position of current input screen location</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28309"></span>6E95</td>
+<td class="instruction">INC IXl</td>
+<td class="comment-1" rowspan="1">increment X position of current input attr location</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28311"></span>6E97</td>
+<td class="instruction">JR <a href="28203.html#28227">Input_Start</a></td>
+<td class="comment-1" rowspan="1">get next char (do until ENTER is pressed)</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28313"></span>
+<div class="comments">
+<div class="paragraph">
+- player pressed "delete" (char '0')
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Input_Delete</td>
+<td class="address-2"><span id="28313"></span>6E99</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">get char counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28314"></span>6E9A</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is it 0?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28315"></span>6E9B</td>
+<td class="instruction">JR Z,<a href="28203.html#28236">Input_Loop</a></td>
+<td class="comment-1" rowspan="1">repeat input loop (no chars to delete)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28317"></span>6E9D</td>
+<td class="instruction">LD (IX+$00),$47</td>
+<td class="comment-1" rowspan="1">restore attributes (BRIGHT+WHITE)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28321"></span>6EA1</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">is it the first char?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28322"></span>6EA2</td>
+<td class="instruction">JR Z,<a href="28203.html#28332">Input_Delete_Char</a></td>
+<td class="comment-1" rowspan="1">yes, continue delete</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28324"></span>6EA4</td>
+<td class="instruction">LD A,$20</td>
+<td class="comment-1" rowspan="1">empty char (' ')</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28326"></span>6EA6</td>
+<td class="instruction">CALL <a href="28517.html">Print_Char</a></td>
+<td class="comment-1" rowspan="1">delete cursor and last char</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28329"></span>6EA9</td>
+<td class="instruction">DEC L</td>
+<td class="comment-1" rowspan="1">decrement X position of input screen location</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28330"></span>6EAA</td>
+<td class="instruction">DEC IXl</td>
+<td class="comment-1" rowspan="1">decrement X position of input attr location</td>
+</tr>
+<tr>
+<td class="asm-label">Input_Delete_Char</td>
+<td class="address-2"><span id="28332"></span>6EAC</td>
+<td class="instruction">DEC C</td>
+<td class="comment-1" rowspan="1">decrement char counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28333"></span>6EAD</td>
+<td class="instruction">LD A,$20</td>
+<td class="comment-1" rowspan="1">empty char (' ')</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28335"></span>6EAF</td>
+<td class="instruction">CALL <a href="28517.html">Print_Char</a></td>
+<td class="comment-1" rowspan="1">delete cursor and last char</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28338"></span>6EB2</td>
+<td class="instruction">DEC L</td>
+<td class="comment-1" rowspan="1">decrement X position of player input screen location</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28339"></span>6EB3</td>
+<td class="instruction">DEC IXl</td>
+<td class="comment-1" rowspan="1">decrement X position of player input attr location</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28341"></span>6EB5</td>
+<td class="instruction">JR <a href="28203.html#28227">Input_Start</a></td>
+<td class="comment-1" rowspan="1">get next char</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28343"></span>
+<div class="comments">
+<div class="paragraph">
+- player pressed ENTER
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Input_Enter</td>
+<td class="address-2"><span id="28343"></span>6EB7</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">check char counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28344"></span>6EB8</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">is it &lt; maximum of input chars?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28345"></span>6EB9</td>
+<td class="instruction">JR C,<a href="28203.html#28236">Input_Loop</a></td>
+<td class="comment-1" rowspan="1">yes, repeat input loop (move is incomplete)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28347"></span>6EBB</td>
+<td class="instruction">LD (IX+$00),$47</td>
+<td class="comment-1" rowspan="1">restore attributes (BRIGHT+WHITE)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28351"></span>6EBF</td>
+<td class="instruction">LD A,$20</td>
+<td class="comment-1" rowspan="1">empty char (' ')</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28353"></span>6EC1</td>
+<td class="instruction">CALL <a href="28517.html">Print_Char</a></td>
+<td class="comment-1" rowspan="1">delete cursor</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28356"></span>6EC4</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28175.html">6E0F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28203">Map</a></td>
+<td class="next">
+Next: <a href="28357.html">6EC5</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

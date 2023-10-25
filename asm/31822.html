@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 7C4E</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31710.html">7BDE</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31822">Map</a></td>
+<td class="next">
+Next: <a href="31859.html">7C73</a>
+</td>
+</tr>
+</table>
+<div class="description">7C4E: Draw Main Menu Hexagons</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="31092.html">Screen_Menu</a> and <a href="30837.html">Screen_Last_Level</a>.
+</div>
+<div class="paragraph">
+Draw the main menu hexagons ("HEX 2") on screen.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Hexagons</td>
+<td class="address-2"><span id="31822"></span>7C4E</td>
+<td class="instruction">LD IY,$66EA</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span> points to <a href="26346.html">MENU_HEXAGONS</a> addresses</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31826"></span>7C52</td>
+<td class="instruction">LD A,$07</td>
+<td class="comment-1" rowspan="1">set hexagon color (WHITE)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31828"></span>7C54</td>
+<td class="instruction">LD ($619E),A</td>
+<td class="comment-1" rowspan="1">save at <a href="24990.html">TOKEN_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31831"></span>7C57</td>
+<td class="instruction">LD DE,$657E</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="25982.html">HEXAGON_EMPTY</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31834"></span>7C5A</td>
+<td class="instruction">LD B,$1C</td>
+<td class="comment-1" rowspan="1">number of empty hexagons (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31836"></span>7C5C</td>
+<td class="instruction">CALL <a href="31859.html">Screen_Hexagons_Loop</a></td>
+<td class="comment-1" rowspan="1">draw empty hexagons</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31839"></span>7C5F</td>
+<td class="instruction">LD A,$05</td>
+<td class="comment-1" rowspan="1">set token color (CYAN)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31841"></span>7C61</td>
+<td class="instruction">LD ($619E),A</td>
+<td class="comment-1" rowspan="1">save at <a href="24990.html">TOKEN_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31844"></span>7C64</td>
+<td class="instruction">LD DE,$663E</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="25982.html#26174">HEXAGON_TOKEN</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31847"></span>7C67</td>
+<td class="instruction">LD B,$06</td>
+<td class="comment-1" rowspan="1">number of cyan tokens (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31849"></span>7C69</td>
+<td class="instruction">CALL <a href="31859.html">Screen_Hexagons_Loop</a></td>
+<td class="comment-1" rowspan="1">draw cyan tokens</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31852"></span>7C6C</td>
+<td class="instruction">LD A,$02</td>
+<td class="comment-1" rowspan="1">set token color (RED)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31854"></span>7C6E</td>
+<td class="instruction">LD ($619E),A</td>
+<td class="comment-1" rowspan="1">save at <a href="24990.html">TOKEN_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31857"></span>7C71</td>
+<td class="instruction">LD B,$06</td>
+<td class="comment-1" rowspan="1">number of red tokens (loop counter)</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="comments">
+<div class="paragraph">
+This routine continues into <a href="31859.html">Screen_Hexagons_Loop</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31710.html">7BDE</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31822">Map</a></td>
+<td class="next">
+Next: <a href="31859.html">7C73</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

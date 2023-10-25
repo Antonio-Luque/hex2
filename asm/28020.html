@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 6D74</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27958.html">6D36</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28020">Map</a></td>
+<td class="next">
+Next: <a href="28033.html">6D81</a>
+</td>
+</tr>
+</table>
+<div class="description">6D74: Search Element in Table</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="28119.html">Draw_GetHEX_Screen</a> and <a href="27958.html">Main_GetPlayer_Move</a>.
+</div>
+<div class="paragraph">
+Search an element in a 8x8 bytes table.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">BC</td>
+<td class="register-desc">Element indexes (<span class="register">B</span>=column, <span class="register">C</span>=row)</td>
+</tr>
+<tr>
+<td class="register">DE</td>
+<td class="register-desc">Table address in which to search for the element</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">DE</td>
+<td class="register-desc">Address of first element in the <span class="register">C</span> row of the table</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Address of the element in the <span class="register">BC</span> indexes of the table</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28020"></span>
+<div class="comments">
+<div class="paragraph">
+First, get the <span class="register">C</span> row in table.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Main_Search_Table</td>
+<td class="address-2"><span id="28020"></span>6D74</td>
+<td class="instruction">LD H,$00</td>
+<td class="comment-1" rowspan="2">set row index in <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28022"></span>6D76</td>
+<td class="instruction">LD L,C</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28023"></span>6D77</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="3">a row is 8 bytes long</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28024"></span>6D78</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28025"></span>6D79</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28026"></span>6D7A</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to the address of <span class="register">C</span> row</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28027"></span>6D7B</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">save it in <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28028"></span>
+<div class="comments">
+<div class="paragraph">
+Now, go for to the <span class="register">B</span> column.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28028"></span>6D7C</td>
+<td class="instruction">LD H,$00</td>
+<td class="comment-1" rowspan="2">set column index in <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28030"></span>6D7E</td>
+<td class="instruction">LD L,B</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28031"></span>6D7F</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to the address of <span class="register">BC</span> indexes</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28032"></span>6D80</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27958.html">6D36</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28020">Map</a></td>
+<td class="next">
+Next: <a href="28033.html">6D81</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

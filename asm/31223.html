@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 79F7</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31092.html">7974</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31223">Map</a></td>
+<td class="next">
+Next: <a href="31395.html">7AA3</a>
+</td>
+</tr>
+</table>
+<div class="description">79F7: Show "How to play" Red Screen</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="31395.html">Screen_How2Play_CYAN</a>.
+</div>
+<div class="paragraph">
+The routine at <a href="31092.html">Screen_Menu</a> continues here.
+</div>
+<div class="paragraph">
+Show "How to play" red screen and wait for an option.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_How2Play_RED</td>
+<td class="address-2"><span id="31223"></span>79F7</td>
+<td class="instruction">LD HL,$585E</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to cyan text area attributes address (-24)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31226"></span>79FA</td>
+<td class="instruction">CALL <a href="31880.html">Screen_Clear_Text</a></td>
+<td class="comment-1" rowspan="1">clear text area attributes</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31229"></span>79FD</td>
+<td class="instruction">CALL <a href="28065.html">Draw_Board</a></td>
+<td class="comment-1" rowspan="1">draw an empty hexagons board</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="31232"></span>
+<div class="comments">
+<div class="paragraph">
+Print help text for red.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31232"></span>7A00</td>
+<td class="instruction">LD IX,$5A01</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to "Connect" string attributes address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31236"></span>7A04</td>
+<td class="instruction">LD BC,$0707</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=string length (loop counter), <span class="register">C</span>=color (WHITE)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31239"></span>7A07</td>
+<td class="instruction">CALL <a href="30779.html#30829">Screen_Apply_Color_Loop</a></td>
+<td class="comment-1" rowspan="1">apply color to string area</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31242"></span>7A0A</td>
+<td class="instruction">LD DE,$685D</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="26496.html#26717">STR_HELP1</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31245"></span>7A0D</td>
+<td class="instruction">LD HL,$5001</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to string screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31248"></span>7A10</td>
+<td class="instruction">CALL <a href="28505.html">Print_String</a></td>
+<td class="comment-1" rowspan="1">print "Connect"</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31251"></span>7A13</td>
+<td class="instruction">LD IXl,$21</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to "left and" string attributes address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31254"></span>7A16</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1">string length (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31256"></span>7A18</td>
+<td class="instruction">CALL <a href="30779.html#30829">Screen_Apply_Color_Loop</a></td>
+<td class="comment-1" rowspan="1">apply color to string area</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31259"></span>7A1B</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">move <span class="register">DE</span> to <a href="26496.html#26725">STR_HELP2_RED</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31260"></span>7A1C</td>
+<td class="instruction">LD L,$21</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to string screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31262"></span>7A1E</td>
+<td class="instruction">CALL <a href="28505.html">Print_String</a></td>
+<td class="comment-1" rowspan="1">print "left and"</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31265"></span>7A21</td>
+<td class="instruction">LD IXl,$41</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to "right" string attributes address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31268"></span>7A24</td>
+<td class="instruction">LD B,$05</td>
+<td class="comment-1" rowspan="1">set string length (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31270"></span>7A26</td>
+<td class="instruction">CALL <a href="30779.html#30829">Screen_Apply_Color_Loop</a></td>
+<td class="comment-1" rowspan="1">apply color to string area</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31273"></span>7A29</td>
+<td class="instruction">LD DE,$6875</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points <a href="26496.html#26741">STR_HELP3_RED</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31276"></span>7A2C</td>
+<td class="instruction">LD L,$41</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to string screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31278"></span>7A2E</td>
+<td class="instruction">CALL <a href="28505.html">Print_String</a></td>
+<td class="comment-1" rowspan="1">print "right"</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31281"></span>7A31</td>
+<td class="instruction">LD IXl,$61</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to "borders" string attributes address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31284"></span>7A34</td>
+<td class="instruction">LD B,$07</td>
+<td class="comment-1" rowspan="1">set string length (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31286"></span>7A36</td>
+<td class="instruction">CALL <a href="30779.html#30829">Screen_Apply_Color_Loop</a></td>
+<td class="comment-1" rowspan="1">apply color to string area</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31289"></span>7A39</td>
+<td class="instruction">LD DE,$6880</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="26496.html#26752">STR_HELP4</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31292"></span>7A3C</td>
+<td class="instruction">LD L,$61</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to string screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31294"></span>7A3E</td>
+<td class="instruction">CALL <a href="28505.html">Print_String</a></td>
+<td class="comment-1" rowspan="1">print "borders"</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31297"></span>7A41</td>
+<td class="instruction">LD IXl,$81</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to "to win" string attributes address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31300"></span>7A44</td>
+<td class="instruction">CALL <a href="30779.html#30827">Screen_Apply_Color</a></td>
+<td class="comment-1" rowspan="1">apply color to string area</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31303"></span>7A47</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">move <span class="register">DE</span> to <a href="26496.html#26760">STR_HELP5</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31304"></span>7A48</td>
+<td class="instruction">LD L,$81</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to string screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31306"></span>7A4A</td>
+<td class="instruction">CALL <a href="28505.html">Print_String</a></td>
+<td class="comment-1" rowspan="1">print "to win"</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31309"></span>7A4D</td>
+<td class="instruction">LD IX,$59E3</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to "RED" string attributes address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31313"></span>7A51</td>
+<td class="instruction">LD BC,$0342</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=string length (loop counter), <span class="register">C</span>=BRIGHT+RED</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31316"></span>7A54</td>
+<td class="instruction">CALL <a href="30779.html#30829">Screen_Apply_Color_Loop</a></td>
+<td class="comment-1" rowspan="1">apply color to string area</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31319"></span>7A57</td>
+<td class="instruction">LD DE,$6854</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="26496.html#26708">STR_RED</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31322"></span>7A5A</td>
+<td class="instruction">LD HL,$48E3</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to string screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31325"></span>7A5D</td>
+<td class="instruction">CALL <a href="28505.html">Print_String</a></td>
+<td class="comment-1" rowspan="1">print "RED"</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="31328"></span>
+<div class="comments">
+<div class="paragraph">
+Draw red sample board.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31328"></span>7A60</td>
+<td class="instruction">LD IY,$673A</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span> points to <a href="26346.html#26426">SAMPLE_BOARD_RED</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31332"></span>7A64</td>
+<td class="instruction">LD DE,$663E</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="25982.html#26174">HEXAGON_TOKEN</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31335"></span>7A67</td>
+<td class="instruction">LD B,$07</td>
+<td class="comment-1" rowspan="1">number of bright+red tokens (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31337"></span>7A69</td>
+<td class="instruction">LD A,$42</td>
+<td class="comment-1" rowspan="1">set token color (BRIGHT+RED)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31339"></span>7A6B</td>
+<td class="instruction">LD ($619E),A</td>
+<td class="comment-1" rowspan="1">save at <a href="24990.html">TOKEN_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31342"></span>7A6E</td>
+<td class="instruction">CALL <a href="31859.html">Screen_Hexagons_Loop</a></td>
+<td class="comment-1" rowspan="1">draw tokens</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31345"></span>7A71</td>
+<td class="instruction">LD B,$02</td>
+<td class="comment-1" rowspan="1">number of red tokens (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31347"></span>7A73</td>
+<td class="instruction">LD A,$02</td>
+<td class="comment-1" rowspan="1">set token color (RED)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31349"></span>7A75</td>
+<td class="instruction">LD ($619E),A</td>
+<td class="comment-1" rowspan="1">save at <a href="24990.html">TOKEN_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31352"></span>7A78</td>
+<td class="instruction">CALL <a href="31859.html">Screen_Hexagons_Loop</a></td>
+<td class="comment-1" rowspan="1">draw tokens</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31355"></span>7A7B</td>
+<td class="instruction">LD B,$09</td>
+<td class="comment-1" rowspan="1">number of cyan tokens (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31357"></span>7A7D</td>
+<td class="instruction">LD A,$05</td>
+<td class="comment-1" rowspan="1">set token color (CYAN)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31359"></span>7A7F</td>
+<td class="instruction">LD ($619E),A</td>
+<td class="comment-1" rowspan="1">save at <a href="24990.html">TOKEN_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31362"></span>7A82</td>
+<td class="instruction">CALL <a href="31859.html">Screen_Hexagons_Loop</a></td>
+<td class="comment-1" rowspan="1">draw tokens</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="31365"></span>
+<div class="comments">
+<div class="paragraph">
+Wait for "Next" option pressed.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31365"></span>7A85</td>
+<td class="instruction">LD IX,$5AC1</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to "Back" string attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31369"></span>7A89</td>
+<td class="instruction">LD BC,$0400</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=string length (loop counter), <span class="register">C</span>=color (BLACK)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31372"></span>7A8C</td>
+<td class="instruction">CALL <a href="30779.html#30829">Screen_Apply_Color_Loop</a></td>
+<td class="comment-1" rowspan="1">hide "Back" string</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31375"></span>7A8F</td>
+<td class="instruction">LD IXl,$DC</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to "Next" string attribute address (+1)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31378"></span>7A92</td>
+<td class="instruction">LD (IX-$01),$78</td>
+<td class="comment-1" rowspan="1">set color of first letter (BRIGHT+WHITE PAPER)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31382"></span>7A96</td>
+<td class="instruction">LD BC,$0347</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=string length-1 (loop counter), <span class="register">C</span>=BRIGHT+WHITE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31385"></span>7A99</td>
+<td class="instruction">CALL <a href="30779.html#30829">Screen_Apply_Color_Loop</a></td>
+<td class="comment-1" rowspan="1">apply color to string area</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_How2PlayRED_End</td>
+<td class="address-2"><span id="31388"></span>7A9C</td>
+<td class="instruction">CALL <a href="28357.html">Input_Key_Scan</a></td>
+<td class="comment-1" rowspan="1">wait for a key pressed</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31391"></span>7A9F</td>
+<td class="instruction">CP $6E</td>
+<td class="comment-1" rowspan="1">is it 'n'?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31393"></span>7AA1</td>
+<td class="instruction">JR NZ,<a href="31223.html#31388">Screen_How2PlayRED_End</a></td>
+<td class="comment-1" rowspan="1">no, repeat until key pressed = 'n'</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="comments">
+<div class="paragraph">
+This routine continues into <a href="31395.html">Screen_How2Play_CYAN</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31092.html">7974</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31223">Map</a></td>
+<td class="next">
+Next: <a href="31395.html">7AA3</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

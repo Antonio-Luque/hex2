@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 6F65</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28505.html">6F59</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28517">Map</a></td>
+<td class="next">
+Next: <a href="28543.html">6F7F</a>
+</td>
+</tr>
+</table>
+<div class="description">6F65: Print Char</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="28505.html">Print_String</a>, <a href="31000.html">Screen_Frame_Color</a>, <a href="31395.html">Screen_How2Play_CYAN</a>, <a href="31578.html">Screen_How2Play_LevelUp</a> and <a href="28203.html">Input_Move</a>.
+</div>
+<div class="paragraph">
+Print a character on the screen.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Character to print (ASCII)</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Character screen address</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Print_Char</td>
+<td class="address-2"><span id="28517"></span>6F65</td>
+<td class="instruction">LD DE,$6800</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="26880.html">FONT</a>-256 address</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28520"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="30593.html">Screen_Frame</a> with <span class="register">A</span>=tile index and <span class="register">DE</span> pointing to <a href="25870.html">FRAME_TILES</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Print_Tile</td>
+<td class="address-2"><span id="28520"></span>6F68</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">store pointer to character/tile screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28521"></span>6F69</td>
+<td class="instruction">LD H,$00</td>
+<td class="comment-1" rowspan="2">set character/tile index in <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28523"></span>6F6B</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28524"></span>6F6C</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="3">a character/tile is 8 bytes long</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28525"></span>6F6D</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28526"></span>6F6E</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28527"></span>6F6F</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to character/tile address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28528"></span>6F70</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to character/tile address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28529"></span>6F71</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">restore pointer to character/tile screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28530"></span>6F72</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">store <span class="register">BC</span> register</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28531"></span>6F73</td>
+<td class="instruction">LD C,H</td>
+<td class="comment-1" rowspan="1">save high byte of character/tile screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28532"></span>6F74</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1">number of character/tile bytes (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label">Print_Tile_Pixels</td>
+<td class="address-2"><span id="28534"></span>6F76</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">get character/tile byte</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28535"></span>6F77</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">put character/tile byte on screen</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28536"></span>6F78</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">move <span class="register">DE</span> to next character/tile byte</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28537"></span>6F79</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> down one pixel-line</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28538"></span>6F7A</td>
+<td class="instruction">DJNZ <a href="28517.html#28534">Print_Tile_Pixels</a></td>
+<td class="comment-1" rowspan="1">repeat for each character/tile bytes</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28540"></span>6F7C</td>
+<td class="instruction">LD H,C</td>
+<td class="comment-1" rowspan="1">restore high byte of character/tile screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28541"></span>6F7D</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">restore <span class="register">BC</span> register</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28542"></span>6F7E</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28505.html">6F59</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28517">Map</a></td>
+<td class="next">
+Next: <a href="28543.html">6F7F</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

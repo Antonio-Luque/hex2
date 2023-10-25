@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 6C83</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27723.html">6C4B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27779">Map</a></td>
+<td class="next">
+Next: <a href="27833.html">6CB9</a>
+</td>
+</tr>
+</table>
+<div class="description">6C83: Match Loop</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+The routine at <a href="27723.html">Main_Start_Match</a> continues here.
+</div>
+<div class="paragraph">
+Processes the players' moves until one of them wins the match.
+</div>
+<div class="paragraph">
+- check player turn
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Main_Match_Loop</td>
+<td class="address-2"><span id="27779"></span>6C83</td>
+<td class="instruction">LD ($619E),A</td>
+<td class="comment-1" rowspan="1">save <a href="24990.html">TOKEN_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27782"></span>6C86</td>
+<td class="instruction">LD HL,$619F</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to <a href="24991.html">PLAYER_COLOR</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27785"></span>6C89</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">is player color = current token color?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27786"></span>6C8A</td>
+<td class="instruction">JR Z,<a href="27779.html#27793">Main_Player_Move</a></td>
+<td class="comment-1" rowspan="1">yes, process player move</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27788"></span>6C8C</td>
+<td class="instruction">CALL <a href="27884.html">Main_GetSpeccy_Move</a></td>
+<td class="comment-1" rowspan="1">get the speccy move</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27791"></span>6C8F</td>
+<td class="instruction">JR <a href="27779.html#27796">Main_Update_Board</a></td>
+<td class="comment-1" rowspan="1">update board position</td>
+</tr>
+<tr>
+<td class="asm-label">Main_Player_Move</td>
+<td class="address-2"><span id="27793"></span>6C91</td>
+<td class="instruction">CALL <a href="27958.html">Main_GetPlayer_Move</a></td>
+<td class="comment-1" rowspan="1">get a legal (empty position) player move</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="27796"></span>
+<div class="comments">
+<div class="paragraph">
+- update positions with player/speccy move
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Main_Update_Board</td>
+<td class="address-2"><span id="27796"></span>6C94</td>
+<td class="instruction">CALL <a href="28909.html">PathFinder_Friend</a></td>
+<td class="comment-1" rowspan="1">get player/speccy side</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27799"></span>6C97</td>
+<td class="instruction">CALL <a href="28919.html">PathFinder_PutToken</a></td>
+<td class="comment-1" rowspan="1">put token on cyan and red positions</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="27802"></span>
+<div class="comments">
+<div class="paragraph">
+- draw token on the board
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27802"></span>6C9A</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=0</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27803"></span>6C9B</td>
+<td class="instruction">LD ($62E9),A</td>
+<td class="comment-1" rowspan="1">set <a href="25321.html">TIMER_FLAG</a> (stop timers)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27806"></span>6C9E</td>
+<td class="instruction">CALL <a href="28092.html">Draw_Token</a></td>
+<td class="comment-1" rowspan="1">animate hexagon sprite on the screen</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27809"></span>6CA1</td>
+<td class="instruction">LD IX,$64E7</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to <a href="25831.html">TOKEN_FX</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27813"></span>6CA5</td>
+<td class="instruction">CALL <a href="30407.html">Sound_FX</a></td>
+<td class="comment-1" rowspan="1">play sound effect</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="27816"></span>
+<div class="comments">
+<div class="paragraph">
+- check for a winner
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27816"></span>6CA8</td>
+<td class="instruction">CALL <a href="30112.html">PathFinder_VictoryPath</a></td>
+<td class="comment-1" rowspan="1">check current player victory path</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27819"></span>6CAB</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">is there a victory path?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27820"></span>6CAC</td>
+<td class="instruction">JR NZ,<a href="27833.html">Main_Match_End</a></td>
+<td class="comment-1" rowspan="1">yes, match ends</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27822"></span>6CAE</td>
+<td class="instruction">LD HL,$619B</td>
+<td class="comment-1" rowspan="1">HL points to <a href="24987.html">MOVE_NUMBER</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27825"></span>6CB1</td>
+<td class="instruction">INC (HL)</td>
+<td class="comment-1" rowspan="1">increment move number</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="27826"></span>
+<div class="comments">
+<div class="paragraph">
+- swap players' token color
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27826"></span>6CB2</td>
+<td class="instruction">LD A,($619E)</td>
+<td class="comment-1" rowspan="1">get <a href="24990.html">TOKEN_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27829"></span>6CB5</td>
+<td class="instruction">XOR $07</td>
+<td class="comment-1" rowspan="1">swap token color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27831"></span>6CB7</td>
+<td class="instruction">JR <a href="27779.html#27779">Main_Match_Loop</a></td>
+<td class="comment-1" rowspan="1">repeat match loop</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27723.html">6C4B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27779">Map</a></td>
+<td class="next">
+Next: <a href="27833.html">6CB9</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

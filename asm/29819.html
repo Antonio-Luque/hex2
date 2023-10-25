@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 747B</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29787.html">745B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29819">Map</a></td>
+<td class="next">
+Next: <a href="29826.html">7482</a>
+</td>
+</tr>
+</table>
+<div class="description">747B: Get Speccy Score</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="28543.html">BRAINIAC_best_move</a>, <a href="28596.html">Alphabeta_Min</a>, <a href="28686.html">Heuristic_Min</a>, <a href="28754.html">Alphabeta_Max</a> and <a href="28844.html">Heuristic_Max</a>.
+</div>
+<div class="paragraph">
+Calculate board score depending on speccy color.
+</div>
+</div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">$FF, if speccy can't reach his opposite edge</td>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">$00, if speccy has a chain of connected tokens between the two edges or if player cant reach his edge</td>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Speccy heuristic evaluation, otherwise</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PathFinder_Score</td>
+<td class="address-2"><span id="29819"></span>747B</td>
+<td class="instruction">LD A,($6199)</td>
+<td class="comment-1" rowspan="1">get <a href="24985.html">AI_PLAYER</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29822"></span>747E</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="1">is it FRIEND?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29824"></span>7480</td>
+<td class="instruction">JR Z,<a href="29875.html">PathFinder_CyanScore</a></td>
+<td class="comment-1" rowspan="1">yes, calculate CYAN score</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="comments">
+<div class="paragraph">
+This routine continues into <a href="29826.html">PathFinder_RedScore</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29787.html">745B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29819">Map</a></td>
+<td class="next">
+Next: <a href="29826.html">7482</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

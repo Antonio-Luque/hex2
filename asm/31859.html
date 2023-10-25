@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 7C73</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31822.html">7C4E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31859">Map</a></td>
+<td class="next">
+Next: <a href="31880.html">7C88</a>
+</td>
+</tr>
+</table>
+<div class="description">7C73: Draw "How to play" Hexagons</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="31822.html">Screen_Hexagons</a>, <a href="31223.html">Screen_How2Play_RED</a>, <a href="31395.html">Screen_How2Play_CYAN</a> and <a href="31578.html">Screen_How2Play_LevelUp</a>.
+</div>
+<div class="paragraph">
+The routine at <a href="31822.html">Screen_Hexagons</a> continues here.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">B</td>
+<td class="register-desc">Number of hexagons to draw</td>
+</tr>
+<tr>
+<td class="register">DE</td>
+<td class="register-desc">Hexagon sprite address (<a href="25982.html">HEXAGON_EMPTY</a> or <a href="25982.html#26174">HEXAGON_TOKEN</a>)</td>
+</tr>
+<tr>
+<td class="register">IY</td>
+<td class="register-desc">Hexagons screen addresses (<a href="26346.html#26426">SAMPLE_BOARD_RED</a> or <a href="26346.html#26462">SAMPLE_BOARD_CYAN</a>)</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Hexagons_Loop</td>
+<td class="address-2"><span id="31859"></span>7C73</td>
+<td class="instruction">LD L,(IY+$00)</td>
+<td class="comment-1" rowspan="2"><span class="register">HL</span> points to hexagon/token screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31862"></span>7C76</td>
+<td class="instruction">LD H,(IY+$01)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31865"></span>7C79</td>
+<td class="instruction">CALL <a href="28175.html">Draw_Hexagon_Color</a></td>
+<td class="comment-1" rowspan="1">apply color to hexagon/token area</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31868"></span>7C7C</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">store hexagon/token sprite address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31869"></span>7C7D</td>
+<td class="instruction">CALL <a href="28129.html">Draw_Sprite_Hexagon</a></td>
+<td class="comment-1" rowspan="1">draw hexagon sprite</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31872"></span>7C80</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">restore hexagon/token sprite address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31873"></span>7C81</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="2">move <span class="register">IY</span> to next hexagon/token screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31875"></span>7C83</td>
+<td class="instruction">INC IY</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31877"></span>7C85</td>
+<td class="instruction">DJNZ <a href="31859.html#31859">Screen_Hexagons_Loop</a></td>
+<td class="comment-1" rowspan="1">repeat for each hexagon/token</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31879"></span>7C87</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31822.html">7C4E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31859">Map</a></td>
+<td class="next">
+Next: <a href="31880.html">7C88</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

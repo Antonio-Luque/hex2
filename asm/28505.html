@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 6F59</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28430.html">6F0E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28505">Map</a></td>
+<td class="next">
+Next: <a href="28517.html">6F65</a>
+</td>
+</tr>
+</table>
+<div class="description">6F59: Print String</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="31092.html">Screen_Menu</a>, <a href="31710.html">Screen_Menu_Credits</a>, <a href="30593.html">Screen_Frame</a>, <a href="31223.html">Screen_How2Play_RED</a>, <a href="31395.html">Screen_How2Play_CYAN</a>, <a href="31578.html">Screen_How2Play_LevelUp</a>, <a href="30837.html">Screen_Last_Level</a> and <a href="28401.html">Print_Players</a>.
+</div>
+<div class="paragraph">
+The routines at <a href="28430.html">Print_Clear_Alert</a>, <a href="28430.html#28437">Print_Alert</a>, <a href="28430.html#28462">Print_Wait</a>, <a href="28430.html#28469">Print_Clear_Move</a> and <a href="28430.html#28476">Print_Move</a> continue here.
+</div>
+<div class="paragraph">
+Print a string on the screen.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">DE</td>
+<td class="register-desc">String address</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">String screen address</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Print_String</td>
+<td class="address-2"><span id="28505"></span>6F59</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">get string character</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28506"></span>6F5A</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is it 0? (end of string)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28507"></span>6F5B</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">yes, return</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28508"></span>6F5C</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">store pointer to string address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28509"></span>6F5D</td>
+<td class="instruction">CALL <a href="28517.html">Print_Char</a></td>
+<td class="comment-1" rowspan="1">print character</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28512"></span>6F60</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">restore pointer to string address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28513"></span>6F61</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">move <span class="register">DE</span> to next string character</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28514"></span>6F62</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to next screen column</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28515"></span>6F63</td>
+<td class="instruction">JR <a href="28505.html#28505">Print_String</a></td>
+<td class="comment-1" rowspan="1">repeat until end of string</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28430.html">6F0E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28505">Map</a></td>
+<td class="next">
+Next: <a href="28517.html">6F65</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

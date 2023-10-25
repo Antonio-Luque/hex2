@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 6F0E</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28401.html">6EF1</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28430">Map</a></td>
+<td class="next">
+Next: <a href="28505.html">6F59</a>
+</td>
+</tr>
+</table>
+<div class="description">6F0E: Print and Clear Game Messages</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Clear a printed alert message below the current player input move. Used by the routine at <a href="27723.html">Main_Start_Match</a> and <a href="27958.html">Main_GetPlayer_Move</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Print_Clear_Alert</td>
+<td class="address-2"><span id="28430"></span>6F0E</td>
+<td class="instruction">LD DE,$6247</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="25115.html#25159">STR_EMPTY6</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28433"></span>6F11</td>
+<td class="instruction">LD C,$47</td>
+<td class="comment-1" rowspan="1">set (clear) alert message color (BRIGHT+WHITE)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28435"></span>6F13</td>
+<td class="instruction">JR <a href="28430.html#28439">Print_Alert_XY</a></td>
+<td class="comment-1" rowspan="1">print (clear) alert string</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28437"></span>
+<div class="comments">
+<div class="paragraph">
+Print an alert message below the current player input move. Used by the routines at <a href="27958.html">Main_GetPlayer_Move</a> and <a href="27833.html">Main_Match_End</a> with <span class="register">DE</span> pointing to the alert string address.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Print_Alert</td>
+<td class="address-2"><span id="28437"></span>6F15</td>
+<td class="instruction">LD C,$C7</td>
+<td class="comment-1" rowspan="1">set alert message color (FLASH+WHITE)</td>
+</tr>
+<tr>
+<td class="asm-label">Print_Alert_XY</td>
+<td class="address-2"><span id="28439"></span>6F17</td>
+<td class="instruction">LD IX,$5AA2</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to red alert string attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28443"></span>6F1B</td>
+<td class="instruction">LD HL,$50A2</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to red alert string screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28446"></span>6F1E</td>
+<td class="instruction">LD A,($619E)</td>
+<td class="comment-1" rowspan="1">check current <a href="24990.html">TOKEN_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28449"></span>6F21</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="1">is token color red?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28451"></span>6F23</td>
+<td class="instruction">JR Z,<a href="28430.html#28502">Print_String_Color</a></td>
+<td class="comment-1" rowspan="1">yes, print alert string with color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28453"></span>6F25</td>
+<td class="instruction">LD IX,$5938</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to cyan alert string attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28457"></span>6F29</td>
+<td class="instruction">LD HL,$4838</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to cyan alert string screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28460"></span>6F2C</td>
+<td class="instruction">JR <a href="28430.html#28502">Print_String_Color</a></td>
+<td class="comment-1" rowspan="1">print alert string with color</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28462"></span>
+<div class="comments">
+<div class="paragraph">
+Print "WAIT" message at current player input move location. Used by the routine at <a href="27884.html">Main_GetSpeccy_Move</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Print_Wait</td>
+<td class="address-2"><span id="28462"></span>6F2E</td>
+<td class="instruction">LD DE,$6236</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="25115.html#25142">STR_WAIT</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28465"></span>6F31</td>
+<td class="instruction">LD C,$C7</td>
+<td class="comment-1" rowspan="1">set wait message color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28467"></span>6F33</td>
+<td class="instruction">JR <a href="28430.html#28481">Print_Move_XY</a></td>
+<td class="comment-1" rowspan="1">print wait string</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28469"></span>
+<div class="comments">
+<div class="paragraph">
+Clear a printed player move at current player input move location. Used by the routines at <a href="27723.html">Main_Start_Match</a> and <a href="27958.html">Main_GetPlayer_Move</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Print_Clear_Move</td>
+<td class="address-2"><span id="28469"></span>6F35</td>
+<td class="instruction">LD DE,$6242</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="25115.html#25154">STR_EMPTY4</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28472"></span>6F38</td>
+<td class="instruction">LD C,$47</td>
+<td class="comment-1" rowspan="1">set (clear) move string color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28474"></span>6F3A</td>
+<td class="instruction">JR <a href="28430.html#28481">Print_Move_XY</a></td>
+<td class="comment-1" rowspan="1">print (clear) move string</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28476"></span>
+<div class="comments">
+<div class="paragraph">
+Print a formatted move at current player input move location. Used by the routines at <a href="27958.html">Main_GetPlayer_Move</a> and <a href="27884.html">Main_GetSpeccy_Move</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Print_Move</td>
+<td class="address-2"><span id="28476"></span>6F3C</td>
+<td class="instruction">LD DE,$6216</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="25110.html">STR_MOVE</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28479"></span>6F3F</td>
+<td class="instruction">LD C,$47</td>
+<td class="comment-1" rowspan="1">set string color (BRIGHT+WHITE)</td>
+</tr>
+<tr>
+<td class="asm-label">Print_Move_XY</td>
+<td class="address-2"><span id="28481"></span>6F41</td>
+<td class="instruction">LD IX,$5A82</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to red move attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28485"></span>6F45</td>
+<td class="instruction">LD HL,$5083</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to red move screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28488"></span>6F48</td>
+<td class="instruction">LD A,($619E)</td>
+<td class="comment-1" rowspan="1">check current <a href="24990.html">TOKEN_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28491"></span>6F4B</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="1">is token color red?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28493"></span>6F4D</td>
+<td class="instruction">JR Z,<a href="28430.html#28502">Print_String_Color</a></td>
+<td class="comment-1" rowspan="1">yes, print move string with color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28495"></span>6F4F</td>
+<td class="instruction">LD IX,$5918</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to cyan move attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28499"></span>6F53</td>
+<td class="instruction">LD HL,$4819</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to cyan move screen address</td>
+</tr>
+<tr>
+<td class="asm-label">Print_String_Color</td>
+<td class="address-2"><span id="28502"></span>6F56</td>
+<td class="instruction">CALL <a href="30779.html#30827">Screen_Apply_Color</a></td>
+<td class="comment-1" rowspan="1">apply color to string area</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="comments">
+<div class="paragraph">
+These routines continue into <a href="28505.html">Print_String</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28401.html">6EF1</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28430">Map</a></td>
+<td class="next">
+Next: <a href="28505.html">6F59</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

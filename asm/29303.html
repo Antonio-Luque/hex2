@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 7277</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29237.html">7235</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29303">Map</a></td>
+<td class="next">
+Next: <a href="29328.html">7290</a>
+</td>
+</tr>
+</table>
+<div class="description">7277: Check Adjacent Positions</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="29237.html">Path_Finder</a>.
+</div>
+<div class="paragraph">
+This is an approach to update the two-distance of adjacent positions. As explained in Jack van Rijswijck's <a href="https://webdocs.cs.ualberta.ca/~hayward/theses/jackmsc.pdf" target="_blank">thesis</a>: "two cells are adjacent if they share a common edge on the board."
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">B</td>
+<td class="register-desc">Current position</td>
+</tr>
+<tr>
+<td class="register">C</td>
+<td class="register-desc">Current distance (with a flag at 6th bit that indicates a friendly position)</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Current edge position at <a href="24832.html">CYAN_BOARD_UP_DOWN</a> or <a href="25600.html">RED_BOARD_LEFT_RIGHT</a></td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">$00, if there is a chain of connected tokens of the same color between the two edges</td>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">$02 (FRIEND), otherwise</td>
+</tr>
+<tr>
+<td class="register">IYL</td>
+<td class="register-desc">$00 or current position.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="29303"></span>
+<div class="comments">
+<div class="paragraph">
+Check if there is a chain of connected tokens.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Path_Finder_Adjnt</td>
+<td class="address-2"><span id="29303"></span>7277</td>
+<td class="instruction">LD A,$43</td>
+<td class="comment-1" rowspan="1">set victory distance + friendly flag</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29305"></span>7279</td>
+<td class="instruction">CP C</td>
+<td class="comment-1" rowspan="1">is current distance victory and friendly?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29306"></span>727A</td>
+<td class="instruction">JR Z,<a href="29303.html#29325">Path_Finder_Abort</a></td>
+<td class="comment-1" rowspan="1">yes, abort path_finder</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="29308"></span>
+<div class="comments">
+<div class="paragraph">
+Calculate the routine address to jump to.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29308"></span>727C</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">get current edge position</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29309"></span>727D</td>
+<td class="instruction">AND $07</td>
+<td class="comment-1" rowspan="1">convert to edge number (0..6)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29311"></span>727F</td>
+<td class="instruction">ADD A,A</td>
+<td class="comment-1" rowspan="1">calculate vector table routine index</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29312"></span>7280</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">set index in <span class="register">L</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29313"></span>7281</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to <a href="25088.html">CYAN_VECTOR_TABLE</a> or <a href="25856.html">RED_VECTOR_TABLE</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29314"></span>7282</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">get low byte of vector table routine address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29315"></span>7283</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to high byte of vector table routine address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29316"></span>7284</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">get high byte of vector table routine address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29317"></span>7285</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to the corresponding routine address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29318"></span>7286</td>
+<td class="instruction">DEC D</td>
+<td class="comment-1" rowspan="1">move <span class="register">DE</span> to cyan or red board address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29319"></span>7287</td>
+<td class="instruction">LD E,B</td>
+<td class="comment-1" rowspan="1">restore pointer to current position</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29320"></span>7288</td>
+<td class="instruction">LD IYl,B</td>
+<td class="comment-1" rowspan="1">last edge position visited = current position</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29322"></span>728A</td>
+<td class="instruction">LD A,$02</td>
+<td class="comment-1" rowspan="1">set distance to compare with (FRIEND)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29324"></span>728C</td>
+<td class="instruction">JP (HL)</td>
+<td class="comment-1" rowspan="1">jump to the routine and return to <a href="29237.html#29253">Path_Finder_Neighbors</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="29325"></span>
+<div class="comments">
+<div class="paragraph">
+Abort 'Path_Finder' and return to previous caller.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Path_Finder_Abort</td>
+<td class="address-2"><span id="29325"></span>728D</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">restore queue head address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29326"></span>728E</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">return <span class="register">A</span>=$00</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29327"></span>728F</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29237.html">7235</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29303">Map</a></td>
+<td class="next">
+Next: <a href="29328.html">7290</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

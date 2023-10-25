@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 783B</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30712.html">77F8</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30779">Map</a></td>
+<td class="next">
+Next: <a href="30837.html">7875</a>
+</td>
+</tr>
+</table>
+<div class="description">783B: Apply Color to Statics Items</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="27677.html">Main_Start</a>.
+</div>
+<div class="paragraph">
+Apply color to some statics items of the screen.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Color_Statics</td>
+<td class="address-2"><span id="30779"></span>783B</td>
+<td class="instruction">LD IX,$5878</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to the attr. address of the cyan player timer</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30783"></span>783F</td>
+<td class="instruction">LD C,$07</td>
+<td class="comment-1" rowspan="1">set color in <span class="register">C</span> (WHITE)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30785"></span>7841</td>
+<td class="instruction">CALL <a href="30779.html#30827">Screen_Apply_Color</a></td>
+<td class="comment-1" rowspan="1">apply color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30788"></span>7844</td>
+<td class="instruction">LD IXl,$98</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to the attr. address of the cyan player name</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30791"></span>7847</td>
+<td class="instruction">LD C,$05</td>
+<td class="comment-1" rowspan="1">set color in <span class="register">C</span> (CYAN)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30793"></span>7849</td>
+<td class="instruction">CALL <a href="30779.html#30827">Screen_Apply_Color</a></td>
+<td class="comment-1" rowspan="1">apply color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30796"></span>784C</td>
+<td class="instruction">LD IX,$5918</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to the att. address of the cyan player messages</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30800"></span>7850</td>
+<td class="instruction">LD C,$47</td>
+<td class="comment-1" rowspan="1">set color in <span class="register">C</span> (BRIGHT+WHITE)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30802"></span>7852</td>
+<td class="instruction">CALL <a href="30779.html#30827">Screen_Apply_Color</a></td>
+<td class="comment-1" rowspan="1">apply color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30805"></span>7855</td>
+<td class="instruction">LD IXl,$E2</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to the attr. address of the red player timer</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30808"></span>7858</td>
+<td class="instruction">LD C,$07</td>
+<td class="comment-1" rowspan="1">set color in <span class="register">C</span> (WHITE)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30810"></span>785A</td>
+<td class="instruction">CALL <a href="30779.html#30827">Screen_Apply_Color</a></td>
+<td class="comment-1" rowspan="1">apply color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30813"></span>785D</td>
+<td class="instruction">LD IX,$5A02</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to the attr. address of the red player name</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30817"></span>7861</td>
+<td class="instruction">LD C,$02</td>
+<td class="comment-1" rowspan="1">set color in <span class="register">C</span> (RED)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30819"></span>7863</td>
+<td class="instruction">CALL <a href="30779.html#30827">Screen_Apply_Color</a></td>
+<td class="comment-1" rowspan="1">apply color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30822"></span>7866</td>
+<td class="instruction">LD IXl,$82</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to the attr. address of the red player messages</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30825"></span>7869</td>
+<td class="instruction">LD C,$47</td>
+<td class="comment-1" rowspan="1">set color in <span class="register">C</span> (BRIGHT+WHITE)</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="30827"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routines at <a href="28430.html">Print_Clear_Alert</a>, <a href="28430.html#28437">Print_Alert</a>, <a href="28430.html#28462">Print_Wait</a>, <a href="28430.html#28469">Print_Clear_Move</a>, <a href="28430.html#28476">Print_Move</a>, <a href="31092.html">Screen_Menu</a>, <a href="31223.html">Screen_How2Play_RED</a> and <a href="31395.html">Screen_How2Play_CYAN</a> with <span class="register">C</span>=color attribute and <span class="register">IX</span> pointing to string attribute address.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Apply_Color</td>
+<td class="address-2"><span id="30827"></span>786B</td>
+<td class="instruction">LD B,$06</td>
+<td class="comment-1" rowspan="1">number of bytes to be colored (loop counter)</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="30829"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routines at <a href="31092.html">Screen_Menu</a>, <a href="31223.html">Screen_How2Play_RED</a>, <a href="31395.html">Screen_How2Play_CYAN</a>, <a href="31578.html">Screen_How2Play_LevelUp</a>, <a href="31710.html">Screen_Menu_Credits</a> and <a href="30837.html">Screen_Last_Level</a> with <span class="register">B</span>=number of bytes, <span class="register">C</span>=color attribute and <span class="register">IX</span> pointing to string attribute address.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Apply_Color_Loop</td>
+<td class="address-2"><span id="30829"></span>786D</td>
+<td class="instruction">LD (IX+$00),C</td>
+<td class="comment-1" rowspan="1">apply color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30832"></span>7870</td>
+<td class="instruction">INC IXl</td>
+<td class="comment-1" rowspan="1">move <span class="register">IX</span> to the next attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30834"></span>7872</td>
+<td class="instruction">DJNZ <a href="30779.html#30829">Screen_Apply_Color_Loop</a></td>
+<td class="comment-1" rowspan="1">repeat for each byte</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30836"></span>7874</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30712.html">77F8</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30779">Map</a></td>
+<td class="next">
+Next: <a href="30837.html">7875</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

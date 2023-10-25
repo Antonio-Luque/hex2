@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 71B5</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29053.html">717D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29109">Map</a></td>
+<td class="next">
+Next: <a href="29175.html">71F7</a>
+</td>
+</tr>
+</table>
+<div class="description">71B5: Two-Distance Red Left-Right</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="29826.html">PathFinder_RedScore</a>, <a href="29875.html">PathFinder_CyanScore</a>, <a href="30056.html">Candidates_Winner</a>, <a href="30056.html#30067">Candidates_Defeat</a> and <a href="30112.html">PathFinder_VictoryPath</a>.
+</div>
+<div class="paragraph">
+Calculate RED start positions' two-distances for LEFT edge and then calculate the rest of RED positions two-distances from LEFT to RIGHT.
+</div>
+</div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">$FF, if right edge couldn't be reached</td>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">$00, if there is chain of connected red tokens between the two edges</td>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Last edge position visited (-1), otherwise</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PathFinder_Red_LeftRight</td>
+<td class="address-2"><span id="29109"></span>71B5</td>
+<td class="instruction">LD HL,$7E07</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to <a href="32256.html">RED_POSITIONS</a>+7 address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29112"></span>71B8</td>
+<td class="instruction">LD DE,$6407</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="25600.html">RED_BOARD_LEFT_RIGHT</a>+7 addr.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29115"></span>71BB</td>
+<td class="instruction">CALL <a href="28931.html">PathFinder_CopyPositions</a></td>
+<td class="comment-1" rowspan="1">copy from red positions to red board left-right</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="29118"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="30112.html">PathFinder_VictoryPath</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PathFinder_Red_CheckPath</td>
+<td class="address-2"><span id="29118"></span>71BE</td>
+<td class="instruction">LD IY,$0100</td>
+<td class="comment-1" rowspan="1"><span class="register">IYH</span>=distance to edge positions, <span class="register">IYL</span>=last edge position visited</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29122"></span>71C2</td>
+<td class="instruction">LD HL,$6300</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to <a href="25344.html">RED_QUEUE_AREA</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29125"></span>71C5</td>
+<td class="instruction">LD ($7127),HL</td>
+<td class="comment-1" rowspan="1">initialize <a href="28956.html#28966">Queue_Tail</a>+1</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29128"></span>71C8</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">store red queue head at stack</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29129"></span>71C9</td>
+<td class="instruction">LD HL,$6409</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to <a href="25600.html">RED_BOARD_LEFT_RIGHT</a>+9 addr.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29132"></span>71CC</td>
+<td class="instruction">LD C,$43</td>
+<td class="comment-1" rowspan="1">set start positions distance + friendly flag</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29134"></span>71CE</td>
+<td class="instruction">LD A,$02</td>
+<td class="comment-1" rowspan="1">set distance to compare with (FRIEND)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29136"></span>71D0</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">check 1st start position distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29137"></span>71D1</td>
+<td class="instruction">CALL NC,<a href="28956.html">PathFinder_Update</a></td>
+<td class="comment-1" rowspan="1">if $02 (FRIEND) &gt;= distance, update distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29140"></span>71D4</td>
+<td class="instruction">LD L,$12</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to next start position address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29142"></span>71D6</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">check 2nd start position distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29143"></span>71D7</td>
+<td class="instruction">CALL NC,<a href="28956.html">PathFinder_Update</a></td>
+<td class="comment-1" rowspan="1">if $02 (FRIEND) &gt;= distance, update distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29146"></span>71DA</td>
+<td class="instruction">LD L,$1B</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to next start position address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29148"></span>71DC</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">check 3rd start position distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29149"></span>71DD</td>
+<td class="instruction">CALL NC,<a href="28956.html">PathFinder_Update</a></td>
+<td class="comment-1" rowspan="1">if $02 (FRIEND) &gt;= distance, update distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29152"></span>71E0</td>
+<td class="instruction">LD L,$24</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to next start position address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29154"></span>71E2</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">check 4th start position distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29155"></span>71E3</td>
+<td class="instruction">CALL NC,<a href="28956.html">PathFinder_Update</a></td>
+<td class="comment-1" rowspan="1">if $02 (FRIEND) &gt;= distance, update distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29158"></span>71E6</td>
+<td class="instruction">LD L,$2D</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to next start position address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29160"></span>71E8</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">check 5th start position distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29161"></span>71E9</td>
+<td class="instruction">CALL NC,<a href="28956.html">PathFinder_Update</a></td>
+<td class="comment-1" rowspan="1">if $02 (FRIEND) &gt;= distance, update distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29164"></span>71EC</td>
+<td class="instruction">LD L,$36</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to next start position address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29166"></span>71EE</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">check 6th start position distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29167"></span>71EF</td>
+<td class="instruction">CALL NC,<a href="28956.html">PathFinder_Update</a></td>
+<td class="comment-1" rowspan="1">if $02 (FRIEND) &gt;= distance, update distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29170"></span>71F2</td>
+<td class="instruction">LD L,$3F</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to next start position address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29172"></span>71F4</td>
+<td class="instruction">JP <a href="29237.html#29287">Path_Finder_First</a></td>
+<td class="comment-1" rowspan="1">calculate two-distances of red board (left-right)</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29053.html">717D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29109">Map</a></td>
+<td class="next">
+Next: <a href="29175.html">71F7</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

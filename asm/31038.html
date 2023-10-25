@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 793E</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31000.html">7918</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31038">Map</a></td>
+<td class="next">
+Next: <a href="31092.html">7974</a>
+</td>
+</tr>
+</table>
+<div class="description">793E: Apply Color to Frame Tiles</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="31000.html">Screen_Frame_Color</a>.
+</div>
+<div class="paragraph">
+Apply color to the frame tiles.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Color to apply</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="31038"></span>
+<div class="comments">
+<div class="paragraph">
+Apply color to up row.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Tiles_Color</td>
+<td class="address-2"><span id="31038"></span>793E</td>
+<td class="instruction">LD HL,$5801</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to attribute address of the the frame tile</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31041"></span>7941</td>
+<td class="instruction">LD B,$06</td>
+<td class="comment-1" rowspan="1">number of tiles (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Tiles_URow1</td>
+<td class="address-2"><span id="31043"></span>7943</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">apply color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31044"></span>7944</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to the next attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31045"></span>7945</td>
+<td class="instruction">DJNZ <a href="31038.html#31043">Screen_Tiles_URow1</a></td>
+<td class="comment-1" rowspan="1">repeat for each tile</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31047"></span>7947</td>
+<td class="instruction">LD L,$12</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to the next attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31049"></span>7949</td>
+<td class="instruction">LD B,$0D</td>
+<td class="comment-1" rowspan="1">number of tiles (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Tiles_URow2</td>
+<td class="address-2"><span id="31051"></span>794B</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">apply color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31052"></span>794C</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to the next attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31053"></span>794D</td>
+<td class="instruction">DJNZ <a href="31038.html#31051">Screen_Tiles_URow2</a></td>
+<td class="comment-1" rowspan="1">repeat for each tile</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="31055"></span>
+<div class="comments">
+<div class="paragraph">
+Apply color to vertical bars.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31055"></span>794F</td>
+<td class="instruction">LD L,$00</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to the next attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31057"></span>7951</td>
+<td class="instruction">LD DE,$001F</td>
+<td class="comment-1" rowspan="1">attribute address displacement (for each bar)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31060"></span>7954</td>
+<td class="instruction">LD C,$03</td>
+<td class="comment-1" rowspan="1">number of screen thirds (outer loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Tiles_VBar1</td>
+<td class="address-2"><span id="31062"></span>7956</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1">number of tiles (inner loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Tiles_VBar2</td>
+<td class="address-2"><span id="31064"></span>7958</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">apply color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31065"></span>7959</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to the right column</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31066"></span>795A</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">apply color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31067"></span>795B</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to the next attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31068"></span>795C</td>
+<td class="instruction">DJNZ <a href="31038.html#31064">Screen_Tiles_VBar2</a></td>
+<td class="comment-1" rowspan="1">repeat for each tile</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31070"></span>795E</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to the next screen third</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31071"></span>795F</td>
+<td class="instruction">DEC C</td>
+<td class="comment-1" rowspan="1">decrement number of thirds</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31072"></span>7960</td>
+<td class="instruction">JR NZ,<a href="31038.html#31062">Screen_Tiles_VBar1</a></td>
+<td class="comment-1" rowspan="1">repeat for each third</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="31074"></span>
+<div class="comments">
+<div class="paragraph">
+Apply color to bottom row.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31074"></span>7962</td>
+<td class="instruction">LD HL,$5AE1</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to attribute address of the the frame tile</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31077"></span>7965</td>
+<td class="instruction">LD B,$10</td>
+<td class="comment-1" rowspan="1">number of tiles (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Tiles_BRow1</td>
+<td class="address-2"><span id="31079"></span>7967</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">apply color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31080"></span>7968</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to the next attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31081"></span>7969</td>
+<td class="instruction">DJNZ <a href="31038.html#31079">Screen_Tiles_BRow1</a></td>
+<td class="comment-1" rowspan="1">repeat for each tile</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31083"></span>796B</td>
+<td class="instruction">LD L,$F6</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to the next attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31085"></span>796D</td>
+<td class="instruction">LD B,$09</td>
+<td class="comment-1" rowspan="1">number of tiles (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Tiles_BRow2</td>
+<td class="address-2"><span id="31087"></span>796F</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">apply color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31088"></span>7970</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to the next attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31089"></span>7971</td>
+<td class="instruction">DJNZ <a href="31038.html#31087">Screen_Tiles_BRow2</a></td>
+<td class="comment-1" rowspan="1">repeat for each tile</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31091"></span>7973</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31000.html">7918</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31038">Map</a></td>
+<td class="next">
+Next: <a href="31092.html">7974</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

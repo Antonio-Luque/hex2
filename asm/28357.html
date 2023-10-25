@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 6EC5</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28203.html">6E2B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28357">Map</a></td>
+<td class="next">
+Next: <a href="28401.html">6EF1</a>
+</td>
+</tr>
+</table>
+<div class="description">6EC5: Keyboard Scanning</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="31092.html">Screen_Menu</a>, <a href="31710.html">Screen_Menu_Credits</a>, <a href="31223.html">Screen_How2Play_RED</a>, <a href="31395.html">Screen_How2Play_CYAN</a>, <a href="31578.html">Screen_How2Play_LevelUp</a>, <a href="30837.html">Screen_Last_Level</a> and <a href="28203.html">Input_Move</a>.
+</div>
+<div class="paragraph">
+Wait for a key pressed and return its ASCII code.
+</div>
+<div class="paragraph">
+<table class="default">
+<tr>
+<th colspan="1" rowspan="2">Port</th>
+<th colspan="5" rowspan="1">Bit</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">0</th>
+<th colspan="1" rowspan="1">1</th>
+<th colspan="1" rowspan="1">2</th>
+<th colspan="1" rowspan="1">3</th>
+<th colspan="1" rowspan="1">4</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">$FEFE</td>
+<td class="centre" colspan="1" rowspan="1">Shift</td>
+<td class="centre" colspan="1" rowspan="1">Z</td>
+<td class="centre" colspan="1" rowspan="1">X</td>
+<td class="centre" colspan="1" rowspan="1">C</td>
+<td class="centre" colspan="1" rowspan="1">V</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">$FDFE</td>
+<td class="centre" colspan="1" rowspan="1">A</td>
+<td class="centre" colspan="1" rowspan="1">S</td>
+<td class="centre" colspan="1" rowspan="1">D</td>
+<td class="centre" colspan="1" rowspan="1">F</td>
+<td class="centre" colspan="1" rowspan="1">G</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">$FBFE</td>
+<td class="centre" colspan="1" rowspan="1">Q</td>
+<td class="centre" colspan="1" rowspan="1">W</td>
+<td class="centre" colspan="1" rowspan="1">E</td>
+<td class="centre" colspan="1" rowspan="1">R</td>
+<td class="centre" colspan="1" rowspan="1">T</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">$F7FE</td>
+<td class="centre" colspan="1" rowspan="1">1</td>
+<td class="centre" colspan="1" rowspan="1">2</td>
+<td class="centre" colspan="1" rowspan="1">3</td>
+<td class="centre" colspan="1" rowspan="1">4</td>
+<td class="centre" colspan="1" rowspan="1">5</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">$EFFE</td>
+<td class="centre" colspan="1" rowspan="1">0</td>
+<td class="centre" colspan="1" rowspan="1">9</td>
+<td class="centre" colspan="1" rowspan="1">8</td>
+<td class="centre" colspan="1" rowspan="1">7</td>
+<td class="centre" colspan="1" rowspan="1">6</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">$DFFE</td>
+<td class="centre" colspan="1" rowspan="1">P</td>
+<td class="centre" colspan="1" rowspan="1">O</td>
+<td class="centre" colspan="1" rowspan="1">I</td>
+<td class="centre" colspan="1" rowspan="1">U</td>
+<td class="centre" colspan="1" rowspan="1">Y</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">$BFFE</td>
+<td class="centre" colspan="1" rowspan="1">Enter</td>
+<td class="centre" colspan="1" rowspan="1">L</td>
+<td class="centre" colspan="1" rowspan="1">K</td>
+<td class="centre" colspan="1" rowspan="1">J</td>
+<td class="centre" colspan="1" rowspan="1">H</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">$7FFE</td>
+<td class="centre" colspan="1" rowspan="1">Space</td>
+<td class="centre" colspan="1" rowspan="1">&nbsp;&nbsp;Sym&nbsp;&nbsp;</td>
+<td class="centre" colspan="1" rowspan="1">&nbsp;&nbsp;&nbsp;M&nbsp;&nbsp;&nbsp;</td>
+<td class="centre" colspan="1" rowspan="1">&nbsp;&nbsp;&nbsp;N&nbsp;&nbsp;&nbsp;</td>
+<td class="centre" colspan="1" rowspan="1">&nbsp;&nbsp;&nbsp;B&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+Bits are set to 0 for any key that is pressed and 1 for any key that is not pressed.
+</div>
+</div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">ASCII code of key pressed</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Input_Key_Scan</td>
+<td class="address-2"><span id="28357"></span>6EC5</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">store <span class="register">BC</span> and <span class="register">HL</span> registers</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28358"></span>6EC6</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="asm-label">Input_Key_Released</td>
+<td class="address-2"><span id="28359"></span>6EC7</td>
+<td class="instruction">LD BC,$FEFE</td>
+<td class="comment-1" rowspan="1">set keyboard port (see above)</td>
+</tr>
+<tr>
+<td class="asm-label">Input_Key_Released_Line</td>
+<td class="address-2"><span id="28362"></span>6ECA</td>
+<td class="instruction">IN A,(C)</td>
+<td class="comment-1" rowspan="1">read port</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28364"></span>6ECC</td>
+<td class="instruction">CPL</td>
+<td class="comment-1" rowspan="1">invert bits</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28365"></span>6ECD</td>
+<td class="instruction">AND $1F</td>
+<td class="comment-1" rowspan="1">check 0 to 4 bits</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28367"></span>6ECF</td>
+<td class="instruction">JR NZ,<a href="28357.html#28359">Input_Key_Released</a></td>
+<td class="comment-1" rowspan="1">repeat from the beginning until no key is pressed</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28369"></span>6ED1</td>
+<td class="instruction">RLC B</td>
+<td class="comment-1" rowspan="1">move <span class="register">BC</span> to the next port</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28371"></span>6ED3</td>
+<td class="instruction">JR C,<a href="28357.html#28362">Input_Key_Released_Line</a></td>
+<td class="comment-1" rowspan="1">repeat for each port</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28373"></span>6ED5</td>
+<td class="instruction">LD DE,$0005</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=number of keys in each port</td>
+</tr>
+<tr>
+<td class="asm-label">Input_Key_Pressed_Begin</td>
+<td class="address-2"><span id="28376"></span>6ED8</td>
+<td class="instruction">LD HL,$61D8</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to <a href="25048.html">KEY_MAP</a> array</td>
+</tr>
+<tr>
+<td class="asm-label">Input_Key_Pressed_Line</td>
+<td class="address-2"><span id="28379"></span>6EDB</td>
+<td class="instruction">IN A,(C)</td>
+<td class="comment-1" rowspan="1">read port</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28381"></span>6EDD</td>
+<td class="instruction">CPL</td>
+<td class="comment-1" rowspan="1">invert bits</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28382"></span>6EDE</td>
+<td class="instruction">AND $1F</td>
+<td class="comment-1" rowspan="1">check 0 to 4 bits</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28384"></span>6EE0</td>
+<td class="instruction">JR NZ,<a href="28357.html#28394">Input_Key_Pressed</a></td>
+<td class="comment-1" rowspan="1">if any key is pressed, process it</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28386"></span>6EE2</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to the next five keys</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28387"></span>6EE3</td>
+<td class="instruction">RLC B</td>
+<td class="comment-1" rowspan="1">move <span class="register">BC</span> to the next port</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28389"></span>6EE5</td>
+<td class="instruction">JR C,<a href="28357.html#28379">Input_Key_Pressed_Line</a></td>
+<td class="comment-1" rowspan="1">repeat for each port</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28391"></span>6EE7</td>
+<td class="instruction">JR <a href="28357.html#28376">Input_Key_Pressed_Begin</a></td>
+<td class="comment-1" rowspan="1">repeat from the beginning until any key is pressed</td>
+</tr>
+<tr>
+<td class="asm-label">Input_Key_Next</td>
+<td class="address-2"><span id="28393"></span>6EE9</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to the next character code</td>
+</tr>
+<tr>
+<td class="asm-label">Input_Key_Pressed</td>
+<td class="address-2"><span id="28394"></span>6EEA</td>
+<td class="instruction">RRA</td>
+<td class="comment-1" rowspan="1">rotate bits of port readed</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28395"></span>6EEB</td>
+<td class="instruction">JR NC,<a href="28357.html#28393">Input_Key_Next</a></td>
+<td class="comment-1" rowspan="1">repeat until find the key pressed</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28397"></span>6EED</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">return key pressed (ASCII) in A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28398"></span>6EEE</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="2">restore <span class="register">HL</span> and <span class="register">BC</span> registers</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28399"></span>6EEF</td>
+<td class="instruction">POP BC</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28400"></span>6EF0</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28203.html">6E2B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28357">Map</a></td>
+<td class="next">
+Next: <a href="28401.html">6EF1</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

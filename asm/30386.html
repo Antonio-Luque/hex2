@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 76B2</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30365.html">769D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30386">Map</a></td>
+<td class="next">
+Next: <a href="30407.html">76C7</a>
+</td>
+</tr>
+</table>
+<div class="description">76B2: Reset Timers</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="27723.html">Main_Start_Match</a>.
+</div>
+<div class="paragraph">
+Initialize cyan and red timers.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Timer_Reset</td>
+<td class="address-2"><span id="30386"></span>76B2</td>
+<td class="instruction">LD HL,$62EA</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to <a href="25322.html">CYAN_TIMER</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30389"></span>76B5</td>
+<td class="instruction">LD (HL),$32</td>
+<td class="comment-1" rowspan="1">set interrupt counter (1/50 seconds)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30391"></span>76B7</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to cyan's seconds counter address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30392"></span>76B8</td>
+<td class="instruction">LD (HL),$00</td>
+<td class="comment-1" rowspan="1">reset seconds counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30394"></span>76BA</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to cyan's minutes counter address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30395"></span>76BB</td>
+<td class="instruction">LD (HL),$00</td>
+<td class="comment-1" rowspan="1">reset minutes counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30397"></span>76BD</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to red's interrupt counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30398"></span>76BE</td>
+<td class="instruction">LD (HL),$32</td>
+<td class="comment-1" rowspan="1">set interrupt counter (1/50 seconds)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30400"></span>76C0</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to red's seconds counter address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30401"></span>76C1</td>
+<td class="instruction">LD (HL),$00</td>
+<td class="comment-1" rowspan="1">reset seconds counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30403"></span>76C3</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to red's minutes counter address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30404"></span>76C4</td>
+<td class="instruction">LD (HL),$00</td>
+<td class="comment-1" rowspan="1">reset minutes counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30406"></span>76C6</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30365.html">769D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30386">Map</a></td>
+<td class="next">
+Next: <a href="30407.html">76C7</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

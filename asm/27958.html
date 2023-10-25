@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 6D36</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27884.html">6CEC</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27958">Map</a></td>
+<td class="next">
+Next: <a href="28020.html">6D74</a>
+</td>
+</tr>
+</table>
+<div class="description">6D36: Get Player Move</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="27779.html">Main_Match_Loop</a>.
+</div>
+<div class="paragraph">
+Get a legal (empty hexagon) move from player.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Current token color</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">BC</td>
+<td class="register-desc">Hexagon board indexes (<span class="register">B</span>=column, <span class="register">C</span>=row)</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc"><a href="32000.html">CYAN_POSITIONS</a> move address</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Main_GetPlayer_Move</td>
+<td class="address-2"><span id="27958"></span>6D36</td>
+<td class="instruction">AND $03</td>
+<td class="comment-1" rowspan="1">calculate player's timer flag based on current token color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27960"></span>6D38</td>
+<td class="instruction">LD ($62E9),A</td>
+<td class="comment-1" rowspan="1">(re)start <a href="25321.html">TIMER_FLAG</a></td>
+</tr>
+<tr>
+<td class="asm-label">Main_GetPlayer_Input</td>
+<td class="address-2"><span id="27963"></span>6D3B</td>
+<td class="instruction">CALL <a href="28430.html#28469">Print_Clear_Move</a></td>
+<td class="comment-1" rowspan="1">clear player last move</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27966"></span>6D3E</td>
+<td class="instruction">CALL <a href="28203.html">Input_Move</a></td>
+<td class="comment-1" rowspan="1">wait for input player move</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27969"></span>6D41</td>
+<td class="instruction">CALL <a href="28430.html#28476">Print_Move</a></td>
+<td class="comment-1" rowspan="1">print player move</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27972"></span>6D44</td>
+<td class="instruction">LD A,($6216)</td>
+<td class="comment-1" rowspan="1">get column ('a'..'g') at <a href="25110.html">STR_MOVE</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27975"></span>6D47</td>
+<td class="instruction">SUB $60</td>
+<td class="comment-1" rowspan="1">convert to number (1..7)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27977"></span>6D49</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">set column index in <span class="register">B</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27978"></span>6D4A</td>
+<td class="instruction">LD A,($6219)</td>
+<td class="comment-1" rowspan="1">get row ('1'..'7') at <a href="25110.html">STR_MOVE</a>+3</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27981"></span>6D4D</td>
+<td class="instruction">SUB $30</td>
+<td class="comment-1" rowspan="1">convert to number (1..7)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27983"></span>6D4F</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">set row index in <span class="register">C</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27984"></span>6D50</td>
+<td class="instruction">LD DE,$624E</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="25166.html">BOARD_COORDINATES</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27987"></span>6D53</td>
+<td class="instruction">CALL <a href="28020.html">Main_Search_Table</a></td>
+<td class="comment-1" rowspan="1">search board position in board coordinates table</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27990"></span>6D56</td>
+<td class="instruction">LD L,(HL)</td>
+<td class="comment-1" rowspan="1">set board position of player move</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27991"></span>6D57</td>
+<td class="instruction">LD H,$7D</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to <a href="32000.html">CYAN_POSITIONS</a> move address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27993"></span>6D59</td>
+<td class="instruction">LD A,$00</td>
+<td class="comment-1" rowspan="1">check position</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27995"></span>6D5B</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">is position empty?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27996"></span>6D5C</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">yes, return to <a href="27779.html#27796">Main_Update_Board</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="27997"></span>
+<div class="comments">
+<div class="paragraph">
+Illegal player move (position not empty).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27997"></span>6D5D</td>
+<td class="instruction">LD DE,$622F</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="25115.html#25135">STR_FILLED</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28000"></span>6D60</td>
+<td class="instruction">CALL <a href="28430.html#28437">Print_Alert</a></td>
+<td class="comment-1" rowspan="1">print string</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28003"></span>6D63</td>
+<td class="instruction">LD IX,$64F7</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points <a href="25831.html#25847">FILLED_FX</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28007"></span>6D67</td>
+<td class="instruction">CALL <a href="30407.html">Sound_FX</a></td>
+<td class="comment-1" rowspan="1">play sound effect</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28010"></span>6D6A</td>
+<td class="instruction">LD A,$50</td>
+<td class="comment-1" rowspan="1">set delay counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28012"></span>6D6C</td>
+<td class="instruction">CALL <a href="28050.html">Main_Delay</a></td>
+<td class="comment-1" rowspan="1">execute delay</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28015"></span>6D6F</td>
+<td class="instruction">CALL <a href="28430.html">Print_Clear_Alert</a></td>
+<td class="comment-1" rowspan="1">clear alert message</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28018"></span>6D72</td>
+<td class="instruction">JR <a href="27958.html#27963">Main_GetPlayer_Input</a></td>
+<td class="comment-1" rowspan="1">repeat player input until move is legal</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27884.html">6CEC</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27958">Map</a></td>
+<td class="next">
+Next: <a href="28020.html">6D74</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

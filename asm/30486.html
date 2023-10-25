@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 7716</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30473.html">7709</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30486">Map</a></td>
+<td class="next">
+Next: <a href="30530.html">7742</a>
+</td>
+</tr>
+</table>
+<div class="description">7716: Draw Board Letters</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="31092.html">Screen_Menu</a> and <a href="27677.html">Main_Start</a>.
+</div>
+<div class="paragraph">
+Draw the two rows of letters on the screen (a..g).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Letters</td>
+<td class="address-2"><span id="30486"></span>7716</td>
+<td class="instruction">LD HL,$4566</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to first letter screen address (top row)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30489"></span>7719</td>
+<td class="instruction">LD IX,$5866</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to first letter attribute address (top row)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30493"></span>771D</td>
+<td class="instruction">CALL <a href="30486.html#30503">Screen_Letters_Row</a></td>
+<td class="comment-1" rowspan="1">draw top row of letters</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30496"></span>7720</td>
+<td class="instruction">LD HL,$516D</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to first letter screen address (bottom row)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30499"></span>7723</td>
+<td class="instruction">LD IX,$5A6D</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to first letter attribute address (bottom row)</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Letters_Row</td>
+<td class="address-2"><span id="30503"></span>7727</td>
+<td class="instruction">LD DE,$665E</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="26206.html">LETTER_SPRITES</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30506"></span>772A</td>
+<td class="instruction">LD B,$07</td>
+<td class="comment-1" rowspan="1">number of letters (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Letter_Loop</td>
+<td class="address-2"><span id="30508"></span>772C</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">store letter screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30509"></span>772D</td>
+<td class="instruction">CALL <a href="28148.html">Draw_Sprite_LetterNum</a></td>
+<td class="comment-1" rowspan="1">draw letter at screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30512"></span>7730</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">restore letter screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30513"></span>7731</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="2">move <span class="register">HL</span> to next screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30514"></span>7732</td>
+<td class="instruction">INC L</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30515"></span>7733</td>
+<td class="instruction">LD (IX+$00),$05</td>
+<td class="comment-1" rowspan="2">set letter color (2 bytes, CYAN)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30519"></span>7737</td>
+<td class="instruction">LD (IX+$20),$05</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30523"></span>773B</td>
+<td class="instruction">INC IXl</td>
+<td class="comment-1" rowspan="2">move <span class="register">IX</span> to next attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30525"></span>773D</td>
+<td class="instruction">INC IXl</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30527"></span>773F</td>
+<td class="instruction">DJNZ <a href="30486.html#30508">Screen_Letter_Loop</a></td>
+<td class="comment-1" rowspan="1">repeat for each letter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30529"></span>7741</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30473.html">7709</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30486">Map</a></td>
+<td class="next">
+Next: <a href="30530.html">7742</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

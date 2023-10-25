@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 700E</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28596.html">6FB4</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28686">Map</a></td>
+<td class="next">
+Next: <a href="28754.html">7052</a>
+</td>
+</tr>
+</table>
+<div class="description">700E: Heuristic Min</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="28596.html">Alphabeta_Min</a>.
+</div>
+<div class="paragraph">
+Specialized routine to process the lowest tree node (depth zero) of the Minimax search tree with alpha-beta pruning, when it requires MINIMIZING Speccy's score.
+</div>
+<div class="paragraph">
+Technically "Heuristic_Min" works exactly like "Alphabeta_Min_Loop", except it directly evaluates board for each child node instead of calling "Alphabeta_Max" recursively. Although it would be easier to just let it invoke "Alphabeta_Max" again to obtain the evaluated board, this simple optimization is responsible for making BRAINIAC almost 2 seconds faster.
+</div>
+<div class="paragraph">
+Original source code by <a href="https://spectrumcomputing.co.uk/entry/31171/ZX-Spectrum/BRAINIAC" target="_blank">Einar Saukas</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">First candidate</td>
+</tr>
+<tr>
+<td class="register">D</td>
+<td class="register-desc">alphaMax</td>
+</tr>
+<tr>
+<td class="register">E</td>
+<td class="register-desc">betaMin</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">D</td>
+<td class="register-desc">alphaMax</td>
+</tr>
+<tr>
+<td class="register">E</td>
+<td class="register-desc">"Improved" betaMin</td>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">"Improved" betaMin</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28686"></span>
+<div class="comments">
+<div class="paragraph">
+Loop for each candidate.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Heuristic_Min</td>
+<td class="address-2"><span id="28686"></span>700E</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">store alphaMax and betaMin</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28687"></span>700F</td>
+<td class="instruction">LD H,$7D</td>
+<td class="comment-1" rowspan="2"><span class="register">HL</span> points to <a href="32000.html">CYAN_POSITIONS</a> candidate address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28689"></span>7011</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28690"></span>7012</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">store candidate position</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28691"></span>7013</td>
+<td class="instruction">LD A,($6199)</td>
+<td class="comment-1" rowspan="1">get <a href="24985.html">AI_PLAYER</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28694"></span>7016</td>
+<td class="instruction">XOR $7C</td>
+<td class="comment-1" rowspan="1">switch to player side</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28696"></span>7018</td>
+<td class="instruction">CALL <a href="28919.html">PathFinder_PutToken</a></td>
+<td class="comment-1" rowspan="1">put player token on both cyan and red positions</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28699"></span>701B</td>
+<td class="instruction">CALL <a href="29819.html">PathFinder_Score</a></td>
+<td class="comment-1" rowspan="1">get board score</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28702"></span>701E</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="1">has player won?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28704"></span>7020</td>
+<td class="instruction">JP NZ,<a href="28686.html#28709">Heuristic_Min_Continue</a></td>
+<td class="comment-1" rowspan="1">no, continue with candidates</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28707"></span>7023</td>
+<td class="instruction">LD A,$40</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=64</td>
+</tr>
+<tr>
+<td class="asm-label">Heuristic_Min_Continue</td>
+<td class="address-2"><span id="28709"></span>7025</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">restore candidate position</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28710"></span>7026</td>
+<td class="instruction">CALL <a href="28925.html">PathFinder_EraseToken</a></td>
+<td class="comment-1" rowspan="1">erase player token on both cyan and red positions</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28713"></span>7029</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">restore alphaMax and betaMin</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28714"></span>702A</td>
+<td class="instruction">CP E</td>
+<td class="comment-1" rowspan="1">check betaMin</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28715"></span>702B</td>
+<td class="instruction">JR NC,<a href="28686.html#28723">Heuristic_Min_Next</a></td>
+<td class="comment-1" rowspan="1">if (<span class="register">A</span> &gt;= betaMin) continue with next candidate</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28717"></span>702D</td>
+<td class="instruction">CP D</td>
+<td class="comment-1" rowspan="1">check alphaMax</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28718"></span>702E</td>
+<td class="instruction">JR C,<a href="28686.html#28738">Heuristic_Min_Exit</a></td>
+<td class="comment-1" rowspan="2">if (<span class="register">A</span> &lt;= alphaMax) return <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28720"></span>7030</td>
+<td class="instruction">JR Z,<a href="28686.html#28738">Heuristic_Min_Exit</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28722"></span>7032</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">betaMin=<span class="register">A</span></td>
+</tr>
+<tr>
+<td class="asm-label">Heuristic_Min_Next</td>
+<td class="address-2"><span id="28723"></span>7033</td>
+<td class="instruction">DEC IXl</td>
+<td class="comment-1" rowspan="1">move <span class="register">IX</span> to the next candidate</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28725"></span>7035</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=next candidate</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28728"></span>7038</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">last candidate?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28729"></span>7039</td>
+<td class="instruction">JP NZ,<a href="28686.html#28686">Heuristic_Min</a></td>
+<td class="comment-1" rowspan="1">no, repeat until no more candidates</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28732"></span>703C</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=betaMin</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28733"></span>703D</td>
+<td class="instruction">LD HL,$619A</td>
+<td class="comment-1" rowspan="2">increment <a href="24986.html">AI_DEPTH</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28736"></span>7040</td>
+<td class="instruction">INC (HL)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28737"></span>7041</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">return betaMin</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28738"></span>
+<div class="comments">
+<div class="paragraph">
+Discard remaining candidates.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Heuristic_Min_Exit</td>
+<td class="address-2"><span id="28738"></span>7042</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">betaMin=<span class="register">A</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28739"></span>7043</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=0</td>
+</tr>
+<tr>
+<td class="asm-label">Heuristic_Min_Skip</td>
+<td class="address-2"><span id="28740"></span>7044</td>
+<td class="instruction">DEC IXl</td>
+<td class="comment-1" rowspan="1">move <span class="register">IX</span> to the next candidate</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28742"></span>7046</td>
+<td class="instruction">CP (IX+$00)</td>
+<td class="comment-1" rowspan="1">last candidate?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28745"></span>7049</td>
+<td class="instruction">JP NZ,<a href="28686.html#28740">Heuristic_Min_Skip</a></td>
+<td class="comment-1" rowspan="1">no, skip candidate</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28748"></span>704C</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=betaMin</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28749"></span>704D</td>
+<td class="instruction">LD HL,$619A</td>
+<td class="comment-1" rowspan="2">increment <a href="24986.html">AI_DEPTH</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28752"></span>7050</td>
+<td class="instruction">INC (HL)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28753"></span>7051</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">return betaMin</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28596.html">6FB4</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28686">Map</a></td>
+<td class="next">
+Next: <a href="28754.html">7052</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

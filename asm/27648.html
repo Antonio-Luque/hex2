@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 6C00</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="26880.html">6900</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27648">Map</a></td>
+<td class="next">
+Next: <a href="27677.html">6C1D</a>
+</td>
+</tr>
+</table>
+<div class="description">6C00: Main Entry Point</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Main entry point of the program.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Main_Entry</td>
+<td class="address-2"><span id="27648"></span>6C00</td>
+<td class="instruction">DI</td>
+<td class="comment-1" rowspan="1">disable interrupts</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27649"></span>6C01</td>
+<td class="instruction">LD HL,$761D</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to <a href="30237.html">Timer_Interrupt</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27652"></span>6C04</td>
+<td class="instruction">LD (IY+$67),$C3</td>
+<td class="comment-1" rowspan="1">set 'JP' opcode at <a href="23713.html">JUMP_INT</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27656"></span>6C08</td>
+<td class="instruction">LD (IY+$68),L</td>
+<td class="comment-1" rowspan="1">set low byte of <a href="30237.html">Timer_Interrupt</a> address at <a href="23713.html">JUMP_INT</a>+1</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27659"></span>6C0B</td>
+<td class="instruction">LD (IY+$69),H</td>
+<td class="comment-1" rowspan="1">set high byte of <a href="30237.html">Timer_Interrupt</a> address at <a href="23713.html">JUMP_INT</a>+2</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27662"></span>6C0E</td>
+<td class="instruction">LD A,$2E</td>
+<td class="comment-1" rowspan="1">set high byte of interrupt vector address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27664"></span>6C10</td>
+<td class="instruction">LD I,A</td>
+<td class="comment-1" rowspan="1">set interrupt vector address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27666"></span>6C12</td>
+<td class="instruction">IM 2</td>
+<td class="comment-1" rowspan="1">set interrupt mode 2</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27668"></span>6C14</td>
+<td class="instruction">LD SP,$6000</td>
+<td class="comment-1" rowspan="1">move stack</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27671"></span>6C17</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=0</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27672"></span>6C18</td>
+<td class="instruction">OUT ($FE),A</td>
+<td class="comment-1" rowspan="1">set border color (BLACK)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27674"></span>6C1A</td>
+<td class="instruction">CALL <a href="31092.html">Screen_Menu</a></td>
+<td class="comment-1" rowspan="1">show main menu and wait for an option</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="comments">
+<div class="paragraph">
+This routine continues into <a href="27677.html">Main_Start</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="26880.html">6900</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27648">Map</a></td>
+<td class="next">
+Next: <a href="27677.html">6C1D</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 78EB</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30837.html">7875</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30955">Map</a></td>
+<td class="next">
+Next: <a href="30983.html">7907</a>
+</td>
+</tr>
+</table>
+<div class="description">78EB: Apply Color to Three-in-a-Row</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="27833.html">Main_Match_End</a>.
+</div>
+<div class="paragraph">
+Color the three-in-a-row marks according to the current three row counter.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_ThreeRow</td>
+<td class="address-2"><span id="30955"></span>78EB</td>
+<td class="instruction">LD HL,$619C</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to <a href="24988.html">LEVEL_COLOR</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30958"></span>78EE</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1">save level color in <span class="register">C</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30959"></span>78EF</td>
+<td class="instruction">CALL <a href="30983.html">Screen_Clear_ThreeRow</a></td>
+<td class="comment-1" rowspan="1">clear all three-in-a-row marks</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30962"></span>78F2</td>
+<td class="instruction">LD A,($620F)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<a href="25103.html">THREE_ROW</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30965"></span>78F5</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is it 0?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30966"></span>78F6</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">yes, return</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30967"></span>78F7</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">is it 1?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30968"></span>78F8</td>
+<td class="instruction">JR Z,<a href="30955.html#30979">Screen_ThreeRow_1</a></td>
+<td class="comment-1" rowspan="1">yes, color first mark</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30970"></span>78FA</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">is it 2?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30971"></span>78FB</td>
+<td class="instruction">JR Z,<a href="30955.html#30976">Screen_ThreeRow_2</a></td>
+<td class="comment-1" rowspan="1">yes color 2nd and 1st marks</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30973"></span>78FD</td>
+<td class="instruction">LD (IX+$00),C</td>
+<td class="comment-1" rowspan="1">color 3rd mark</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_ThreeRow_2</td>
+<td class="address-2"><span id="30976"></span>7900</td>
+<td class="instruction">LD (IX+$01),C</td>
+<td class="comment-1" rowspan="1">color 2nd mark</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_ThreeRow_1</td>
+<td class="address-2"><span id="30979"></span>7903</td>
+<td class="instruction">LD (IX+$02),C</td>
+<td class="comment-1" rowspan="1">color 1st mark</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30982"></span>7906</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30837.html">7875</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30955">Map</a></td>
+<td class="next">
+Next: <a href="30983.html">7907</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

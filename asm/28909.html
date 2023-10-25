@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 70ED</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28844.html">70AC</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28909">Map</a></td>
+<td class="next">
+Next: <a href="28919.html">70F7</a>
+</td>
+</tr>
+</table>
+<div class="description">70ED: Get Speccy Side</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="27884.html">Main_GetSpeccy_Move</a> and <a href="27779.html">Main_Match_Loop</a>.
+</div>
+<div class="paragraph">
+Return if current player is FRIEND ($02) or ENEMY ($7E) from the perspective of the cyan player.
+</div>
+</div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">$02, if current token color is cyan</td>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">$7E, if current token color is red</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PathFinder_Friend</td>
+<td class="address-2"><span id="28909"></span>70ED</td>
+<td class="instruction">LD A,($619E)</td>
+<td class="comment-1" rowspan="1">get <a href="24990.html">TOKEN_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28912"></span>70F0</td>
+<td class="instruction">RRA</td>
+<td class="comment-1" rowspan="1">is current player color cyan?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28913"></span>70F1</td>
+<td class="instruction">LD A,$02</td>
+<td class="comment-1" rowspan="1">set FRIEND in <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28915"></span>70F3</td>
+<td class="instruction">RET C</td>
+<td class="comment-1" rowspan="1">yes, return FRIEND</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28916"></span>70F4</td>
+<td class="instruction">XOR $7C</td>
+<td class="comment-1" rowspan="1">no, return ENEMY</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28918"></span>70F6</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28844.html">70AC</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28909">Map</a></td>
+<td class="next">
+Next: <a href="28919.html">70F7</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

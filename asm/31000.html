@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 7918</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30983.html">7907</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31000">Map</a></td>
+<td class="next">
+Next: <a href="31038.html">793E</a>
+</td>
+</tr>
+</table>
+<div class="description">7918: Apply Color to Frame</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="31092.html">Screen_Menu</a> and <a href="27677.html#27699">Main_New_Level</a>.
+</div>
+<div class="paragraph">
+Set up frame color and print level number depending on current level.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc"><a href="24989.html">GAME_LEVEL</a></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Frame_Color</td>
+<td class="address-2"><span id="31000"></span>7918</td>
+<td class="instruction">LD B,$00</td>
+<td class="comment-1" rowspan="2">set game level in <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31002"></span>791A</td>
+<td class="instruction">LD C,(HL)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31003"></span>791B</td>
+<td class="instruction">LD A,$30</td>
+<td class="comment-1" rowspan="2">convert game level number to game level character</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31005"></span>791D</td>
+<td class="instruction">ADD A,C</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31006"></span>791E</td>
+<td class="instruction">LD HL,$400F</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to screen address of game level</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31009"></span>7921</td>
+<td class="instruction">CALL <a href="28517.html">Print_Char</a></td>
+<td class="comment-1" rowspan="1">print game level</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31012"></span>7924</td>
+<td class="instruction">LD HL,$620F</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to <a href="25104.html">ROW_COLOR_MAP</a>-1 (adjusted for index 0)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31015"></span>7927</td>
+<td class="instruction">ADD HL,BC</td>
+<td class="comment-1" rowspan="1">use <span class="register">BC</span> as index for color map address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31016"></span>7928</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=level color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31017"></span>7929</td>
+<td class="instruction">CALL <a href="31038.html">Screen_Tiles_Color</a></td>
+<td class="comment-1" rowspan="1">color the frame according to the current level</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31020"></span>792C</td>
+<td class="instruction">AND $07</td>
+<td class="comment-1" rowspan="1">mask color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31022"></span>792E</td>
+<td class="instruction">LD ($619C),A</td>
+<td class="comment-1" rowspan="1">save at <a href="24988.html">LEVEL_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31025"></span>7931</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="3">rotate to text level color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31026"></span>7932</td>
+<td class="instruction">RLA</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31027"></span>7933</td>
+<td class="instruction">RLA</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31028"></span>7934</td>
+<td class="instruction">LD HL,$5808</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to attribute address of level text</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31031"></span>7937</td>
+<td class="instruction">LD B,$09</td>
+<td class="comment-1" rowspan="1">length of level text (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Level_Loop</td>
+<td class="address-2"><span id="31033"></span>7939</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">apply color to level text</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31034"></span>793A</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to attribute address of next character of level text</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31035"></span>793B</td>
+<td class="instruction">DJNZ <a href="31000.html#31033">Screen_Level_Loop</a></td>
+<td class="comment-1" rowspan="1">repeat for each character of level text</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="31037"></span>793D</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30983.html">7907</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31000">Map</a></td>
+<td class="next">
+Next: <a href="31038.html">793E</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

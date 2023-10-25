@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 6E0F</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28160.html">6E00</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28175">Map</a></td>
+<td class="next">
+Next: <a href="28203.html">6E2B</a>
+</td>
+</tr>
+</table>
+<div class="description">6E0F: Apply Color to Hexagon/Token</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="31859.html">Screen_Hexagons_Loop</a>, <a href="28065.html">Draw_Board</a>, <a href="30681.html">Screen_Tokens</a> and <a href="28092.html">Draw_Token</a>.
+</div>
+<div class="paragraph">
+Apply color to the attributes area of an hexagon/token sprite.
+</div>
+<div class="paragraph">
+This routine converts a screen address into an attribute address:
+</div>
+<div class="paragraph">
+<table class="default">
+<tr>
+<td class="centre transparent" colspan="1" rowspan="1"></td>
+<th colspan="8" rowspan="1">H</th>
+<th colspan="8" rowspan="1">L</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">Bit</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;7&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;6&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;5&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;4&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;3&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;2&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;1&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;0&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;7&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;6&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;5&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;4&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;3&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;2&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;1&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;0&nbsp;&nbsp;</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">Value</th>
+<th colspan="1" rowspan="1">0</th>
+<th colspan="1" rowspan="1">1</th>
+<th colspan="1" rowspan="1">0</th>
+<td class="centre" colspan="1" rowspan="1">Y7</td>
+<td class="centre" colspan="1" rowspan="1">Y6</td>
+<td class="centre" colspan="1" rowspan="1">Y2</td>
+<td class="centre" colspan="1" rowspan="1">Y1</td>
+<td class="centre" colspan="1" rowspan="1">Y0</td>
+<td class="centre" colspan="1" rowspan="1">Y5</td>
+<td class="centre" colspan="1" rowspan="1">Y4</td>
+<td class="centre" colspan="1" rowspan="1">Y3</td>
+<td class="centre" colspan="1" rowspan="1">X4</td>
+<td class="centre" colspan="1" rowspan="1">X3</td>
+<td class="centre" colspan="1" rowspan="1">X2</td>
+<td class="centre" colspan="1" rowspan="1">X1</td>
+<td class="centre" colspan="1" rowspan="1">X0</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<table class="default">
+<tr>
+<td class="centre transparent" colspan="1" rowspan="1"></td>
+<th colspan="8" rowspan="1">IXH</th>
+<th colspan="8" rowspan="1">IXL</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">Bit</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;7&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;6&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;5&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;4&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;3&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;2&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;1&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;0&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;7&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;6&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;5&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;4&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;3&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;2&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;1&nbsp;&nbsp;</th>
+<th colspan="1" rowspan="1">&nbsp;&nbsp;0&nbsp;&nbsp;</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">Value</th>
+<th colspan="1" rowspan="1">0</th>
+<th colspan="1" rowspan="1">1</th>
+<th colspan="1" rowspan="1">0</th>
+<th colspan="1" rowspan="1">1</th>
+<th colspan="1" rowspan="1">1</th>
+<th colspan="1" rowspan="1">0</th>
+<td class="centre" colspan="1" rowspan="1">Y7</td>
+<td class="centre" colspan="1" rowspan="1">Y6</td>
+<td class="centre" colspan="1" rowspan="1">Y5</td>
+<td class="centre" colspan="1" rowspan="1">Y4</td>
+<td class="centre" colspan="1" rowspan="1">Y3</td>
+<td class="centre" colspan="1" rowspan="1">X4</td>
+<td class="centre" colspan="1" rowspan="1">X3</td>
+<td class="centre" colspan="1" rowspan="1">X2</td>
+<td class="centre" colspan="1" rowspan="1">X1</td>
+<td class="centre" colspan="1" rowspan="1">X0</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+Where:
+</div>
+<div class="paragraph">
+<ul class="">
+<li>Y = Pixel position: Y7, Y6, Y5, Y4, Y3, Y2, Y1, Y0 (0-191)</li>
+<li>X = Byte  position: 0, 0, 0, X4, X3, X2, X1, X0 (0-31)</li>
+</ul>
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Screen address of the hexagon/token</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc"><a href="24990.html">TOKEN_COLOR</a></td>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">Attribute address of the hexagon/token</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Draw_Hexagon_Color</td>
+<td class="address-2"><span id="28175"></span>6E0F</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">get high byte of screen address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28176"></span>6E10</td>
+<td class="instruction">OR $87</td>
+<td class="comment-1" rowspan="1">mask Y0-Y2 and set bit 7 on</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28178"></span>6E12</td>
+<td class="instruction">RRA</td>
+<td class="comment-1" rowspan="2">shift Y7-Y6 two positions</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28179"></span>6E13</td>
+<td class="instruction">RRA</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28180"></span>6E14</td>
+<td class="instruction">SRL A</td>
+<td class="comment-1" rowspan="1">shift Y7-Y6 to last positions and set bit 7 off</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28182"></span>6E16</td>
+<td class="instruction">LD IXh,A</td>
+<td class="comment-1" rowspan="1">set high byte of attribute address in <span class="register">IXH</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28184"></span>6E18</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">(the low byte for attribute address doesn't change)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28185"></span>6E19</td>
+<td class="instruction">LD IXl,A</td>
+<td class="comment-1" rowspan="1">set low byte of attribute address in <span class="register">IXL</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28187"></span>6E1B</td>
+<td class="instruction">LD A,($619E)</td>
+<td class="comment-1" rowspan="1">get <a href="24990.html">TOKEN_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28190"></span>6E1E</td>
+<td class="instruction">LD (IX+$00),A</td>
+<td class="comment-1" rowspan="4">set hexagon/token color (4 bytes)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28193"></span>6E21</td>
+<td class="instruction">LD (IX+$01),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28196"></span>6E24</td>
+<td class="instruction">LD (IX+$20),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28199"></span>6E27</td>
+<td class="instruction">LD (IX+$21),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="28202"></span>6E2A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28160.html">6E00</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28175">Map</a></td>
+<td class="next">
+Next: <a href="28203.html">6E2B</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

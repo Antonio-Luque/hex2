@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 76C7</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30386.html">76B2</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30407">Map</a></td>
+<td class="next">
+Next: <a href="30473.html">7709</a>
+</td>
+</tr>
+</table>
+<div class="description">76C7: Play Sound Effect</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="30837.html">Screen_Last_Level</a>, <a href="27958.html">Main_GetPlayer_Move</a>, <a href="27779.html">Main_Match_Loop</a> and <a href="30165.html">PathFinder_BrightPath</a>.
+</div>
+<div class="paragraph">
+Play a sound effect (tone) defined by many parameters. Coded with <a href="https://shiru.untergrund.net/software.shtml" target="_blank">BeepFX</a> player tool by Shiru.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">Tone parameters address</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Sound_FX</td>
+<td class="address-2"><span id="30407"></span>76C7</td>
+<td class="instruction">DI</td>
+<td class="comment-1" rowspan="1">disable interrupts</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30408"></span>76C8</td>
+<td class="instruction">LD C,(IX+$00)</td>
+<td class="comment-1" rowspan="2"><span class="register">BC</span>=frames</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30411"></span>76CB</td>
+<td class="instruction">LD B,(IX+$01)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30414"></span>76CE</td>
+<td class="instruction">LD E,(IX+$02)</td>
+<td class="comment-1" rowspan="2"><span class="register">DE</span>=frame length</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30417"></span>76D1</td>
+<td class="instruction">LD D,(IX+$03)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30420"></span>76D4</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="2">store frame length in <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30421"></span>76D5</td>
+<td class="instruction">POP IY</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30423"></span>76D7</td>
+<td class="instruction">LD E,(IX+$04)</td>
+<td class="comment-1" rowspan="2"><span class="register">DE</span>=pitch</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30426"></span>76DA</td>
+<td class="instruction">LD D,(IX+$05)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30429"></span>76DD</td>
+<td class="instruction">LD HL,$0000</td>
+<td class="comment-1" rowspan="1">reset <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="asm-label">Sound_FX_Frames</td>
+<td class="address-2"><span id="30432"></span>76E0</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">store frames</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30433"></span>76E1</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="2">restore frame length in <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30435"></span>76E3</td>
+<td class="instruction">POP BC</td>
+</tr>
+<tr>
+<td class="asm-label">Sound_FX_FrameLength</td>
+<td class="address-2"><span id="30436"></span>76E4</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=incremented pitch</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30437"></span>76E5</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">compares with fixed duty cycle ($80 for 50% square wave)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30438"></span>76E6</td>
+<td class="instruction">CP $80</td>
+<td class="comment-1" rowspan="1">if (incremented pitch &lt; duty cycle) ...</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30440"></span>76E8</td>
+<td class="instruction">SBC A,A</td>
+<td class="comment-1" rowspan="1">... <span class="register">A</span>=%11111111 else <span class="register">A</span>=%00000000</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30441"></span>76E9</td>
+<td class="instruction">AND $10</td>
+<td class="comment-1" rowspan="1">toggling bit 4 controls the internal speaker</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30443"></span>76EB</td>
+<td class="instruction">OR $00</td>
+<td class="comment-1" rowspan="1">keep border unchanged, dummy (7t)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30445"></span>76ED</td>
+<td class="instruction">OUT ($FE),A</td>
+<td class="comment-1" rowspan="1">send bit to internal speaker</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30447"></span>76EF</td>
+<td class="instruction">LD A,($0000)</td>
+<td class="comment-1" rowspan="1">dummy (13t)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30450"></span>76F2</td>
+<td class="instruction">DEC BC</td>
+<td class="comment-1" rowspan="1">decrement frame length</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30451"></span>76F3</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">check frame length</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30452"></span>76F4</td>
+<td class="instruction">OR C</td>
+<td class="comment-1" rowspan="1">frame length = 0?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30453"></span>76F5</td>
+<td class="instruction">JP NZ,<a href="30407.html#30436">Sound_FX_FrameLength</a></td>
+<td class="comment-1" rowspan="1">no, repeat "frame length" times (loop = 88t)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30456"></span>76F8</td>
+<td class="instruction">LD C,(IX+$06)</td>
+<td class="comment-1" rowspan="2"><span class="register">BC</span>=pitch slide</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30459"></span>76FB</td>
+<td class="instruction">LD B,(IX+$07)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30462"></span>76FE</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=current pitch</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30463"></span>76FF</td>
+<td class="instruction">ADD HL,BC</td>
+<td class="comment-1" rowspan="1">increment pitch with pitch slide</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30464"></span>7700</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=new pitch</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30465"></span>7701</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">restore frames</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30466"></span>7702</td>
+<td class="instruction">DEC BC</td>
+<td class="comment-1" rowspan="1">decrement frames</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30467"></span>7703</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">check frames</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30468"></span>7704</td>
+<td class="instruction">OR C</td>
+<td class="comment-1" rowspan="1">frames = 0?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30469"></span>7705</td>
+<td class="instruction">JR NZ,<a href="30407.html#30432">Sound_FX_Frames</a></td>
+<td class="comment-1" rowspan="1">no, repeat "frames" times</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30471"></span>7707</td>
+<td class="instruction">EI</td>
+<td class="comment-1" rowspan="1">enable interrupts</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30472"></span>7708</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30386.html">76B2</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30407">Map</a></td>
+<td class="next">
+Next: <a href="30473.html">7709</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

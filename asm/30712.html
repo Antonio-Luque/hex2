@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 77F8</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30681.html">77D9</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30712">Map</a></td>
+<td class="next">
+Next: <a href="30779.html">783B</a>
+</td>
+</tr>
+</table>
+<div class="description">77F8: Draw Timer Quotes</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="27677.html">Main_Start</a>.
+</div>
+<div class="paragraph">
+Draw the timer quotes ('  '') on the screen.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Timer_Quotes</td>
+<td class="address-2"><span id="30712"></span>77F8</td>
+<td class="instruction">LD IX,$407A</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to the screen address of the cyan timer quotes</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30716"></span>77FC</td>
+<td class="instruction">LD (IX+$00),$08</td>
+<td class="comment-1" rowspan="1">draw 1st half of simple quote (')</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30720"></span>7800</td>
+<td class="instruction">LD (IX+$03),$0A</td>
+<td class="comment-1" rowspan="1">draw 1st half of double quotes (")</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30724"></span>7804</td>
+<td class="instruction">INC IXh</td>
+<td class="comment-1" rowspan="1">move <span class="register">IX</span> to the next screen pixel-line</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30726"></span>7806</td>
+<td class="instruction">LD (IX+$00),$08</td>
+<td class="comment-1" rowspan="1">draw 2nd half of simple quote (')</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30730"></span>780A</td>
+<td class="instruction">LD (IX+$03),$0A</td>
+<td class="comment-1" rowspan="1">draw 2nd half of double quotes (")</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30734"></span>780E</td>
+<td class="instruction">LD IXh,$58</td>
+<td class="comment-1" rowspan="1">move <span class="register">IX</span> to the attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30737"></span>7811</td>
+<td class="instruction">LD (IX+$00),$07</td>
+<td class="comment-1" rowspan="1">color simple quote</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30741"></span>7815</td>
+<td class="instruction">LD (IX+$03),$07</td>
+<td class="comment-1" rowspan="1">color double quotes</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30745"></span>7819</td>
+<td class="instruction">LD IX,$48E4</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to the screen address of the red timer quotes</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30749"></span>781D</td>
+<td class="instruction">LD (IX+$00),$08</td>
+<td class="comment-1" rowspan="1">draw 1st half of simple quote (')</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30753"></span>7821</td>
+<td class="instruction">LD (IX+$03),$0A</td>
+<td class="comment-1" rowspan="1">draw 1st half of double quotes (")</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30757"></span>7825</td>
+<td class="instruction">INC IXh</td>
+<td class="comment-1" rowspan="1">move <span class="register">IX</span> to the next screen pixel-line</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30759"></span>7827</td>
+<td class="instruction">LD (IX+$00),$08</td>
+<td class="comment-1" rowspan="1">draw 2nd half of simple quote (')</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30763"></span>782B</td>
+<td class="instruction">LD (IX+$03),$0A</td>
+<td class="comment-1" rowspan="1">draw 2nd half of double quotes (")</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30767"></span>782F</td>
+<td class="instruction">LD IXh,$59</td>
+<td class="comment-1" rowspan="1">move <span class="register">IX</span> to the attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30770"></span>7832</td>
+<td class="instruction">LD (IX+$00),$07</td>
+<td class="comment-1" rowspan="1">color simple quote</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30774"></span>7836</td>
+<td class="instruction">LD (IX+$03),$07</td>
+<td class="comment-1" rowspan="1">color double quotes</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30778"></span>783A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30681.html">77D9</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30712">Map</a></td>
+<td class="next">
+Next: <a href="30779.html">783B</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 6C4B</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27677.html">6C1D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27723">Map</a></td>
+<td class="next">
+Next: <a href="27779.html">6C83</a>
+</td>
+</tr>
+</table>
+<div class="description">6C4B: Start New Match</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="27833.html">Main_Match_End</a>.
+</div>
+<div class="paragraph">
+The routine at <a href="27677.html">Main_Start</a> continues here.
+</div>
+<div class="paragraph">
+Start a new match.
+</div>
+<div class="paragraph">
+- set up timers and clear last messages
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Main_Start_Match</td>
+<td class="address-2"><span id="27723"></span>6C4B</td>
+<td class="instruction">CALL <a href="30386.html">Timer_Reset</a></td>
+<td class="comment-1" rowspan="1">reset timers</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27726"></span>6C4E</td>
+<td class="instruction">CALL <a href="30365.html">Timer_Display_All</a></td>
+<td class="comment-1" rowspan="1">display timers</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27729"></span>6C51</td>
+<td class="instruction">CALL <a href="28430.html">Print_Clear_Alert</a></td>
+<td class="comment-1" rowspan="1">clear last alert</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27732"></span>6C54</td>
+<td class="instruction">LD A,$02</td>
+<td class="comment-1" rowspan="1">set token color (RED)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27734"></span>6C56</td>
+<td class="instruction">LD ($619E),A</td>
+<td class="comment-1" rowspan="1">save at <a href="24990.html">TOKEN_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27737"></span>6C59</td>
+<td class="instruction">CALL <a href="28430.html#28469">Print_Clear_Move</a></td>
+<td class="comment-1" rowspan="1">clear red player last move</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="27740"></span>
+<div class="comments">
+<div class="paragraph">
+- swap players' colors
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27740"></span>6C5C</td>
+<td class="instruction">LD A,($619F)</td>
+<td class="comment-1" rowspan="1">get current <a href="24991.html">PLAYER_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27743"></span>6C5F</td>
+<td class="instruction">XOR $07</td>
+<td class="comment-1" rowspan="1">swap color</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27745"></span>6C61</td>
+<td class="instruction">LD ($619F),A</td>
+<td class="comment-1" rowspan="1">save swapped <a href="24991.html">PLAYER_COLOR</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27748"></span>6C64</td>
+<td class="instruction">CALL <a href="28401.html">Print_Players</a></td>
+<td class="comment-1" rowspan="1">print "Player" and "Speccy" strings</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="27751"></span>
+<div class="comments">
+<div class="paragraph">
+- initialize positions and draw empty board
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27751"></span>6C67</td>
+<td class="instruction">LD HL,$7D00</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to <a href="32000.html">CYAN_POSITIONS</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27754"></span>6C6A</td>
+<td class="instruction">LD DE,$7D01</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="32000.html">CYAN_POSITIONS</a>+1 address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27757"></span>6C6D</td>
+<td class="instruction">LD (HL),$00</td>
+<td class="comment-1" rowspan="1">set first position as empty</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27759"></span>6C6F</td>
+<td class="instruction">LD BC,$01FF</td>
+<td class="comment-1" rowspan="1">length of cyan + red positions areas (-1 already set)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27762"></span>6C72</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">fill the rest of positions as empty</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27764"></span>6C74</td>
+<td class="instruction">CALL <a href="28065.html">Draw_Board</a></td>
+<td class="comment-1" rowspan="1">draw an empty hexagons board</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="27767"></span>
+<div class="comments">
+<div class="paragraph">
+- initialize draw token delay, move number and token color
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27767"></span>6C77</td>
+<td class="instruction">LD A,$0A</td>
+<td class="comment-1" rowspan="2">set delay duration at <a href="28092.html#28111">Draw_Token_Delay</a>+1</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27769"></span>6C79</td>
+<td class="instruction">LD ($6DD0),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27772"></span>6C7C</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">initialize <a href="24987.html">MOVE_NUMBER</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27774"></span>6C7E</td>
+<td class="instruction">LD ($619B),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="27777"></span>6C81</td>
+<td class="instruction">LD A,$05</td>
+<td class="comment-1" rowspan="1">first player token color (CYAN)</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="comments">
+<div class="paragraph">
+This routine continues into <a href="27779.html">Main_Match_Loop</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27677.html">6C1D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27723">Map</a></td>
+<td class="next">
+Next: <a href="27779.html">6C83</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

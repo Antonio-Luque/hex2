@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 7403</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29669.html">73E5</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29699">Map</a></td>
+<td class="next">
+Next: <a href="29730.html">7422</a>
+</td>
+</tr>
+</table>
+<div class="description">7403: Update Adjacents of Cyan Edge #3</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="29303.html">Path_Finder_Adjnt</a>.
+</div>
+<div class="paragraph">
+Update adjacents two-distance of Cyan Edge #3.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">$02 (FRIEND)</td>
+</tr>
+<tr>
+<td class="register">DE</td>
+<td class="register-desc">Current position address at <a href="24832.html">CYAN_BOARD_UP_DOWN</a></td>
+</tr>
+<tr>
+<td class="register">IYL</td>
+<td class="register-desc">Current position</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">$02 (FRIEND)</td>
+</tr>
+<tr>
+<td class="register">B</td>
+<td class="register-desc">Current position</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="29699"></span>
+<div class="comments">
+<div class="paragraph">
+The address of this routine is found in the <a href="25088.html">CYAN_VECTOR_TABLE</a>+6.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PathFinder_CYAN_Edge_3</td>
+<td class="address-2"><span id="29699"></span>7403</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">restore pointer to current position address in <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29700"></span>7404</td>
+<td class="instruction">DEC L</td>
+<td class="comment-1" rowspan="3">move <span class="register">HL</span> to adjacent #0 address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29701"></span>7405</td>
+<td class="instruction">DEC L</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29702"></span>7406</td>
+<td class="instruction">DEC L</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29703"></span>7407</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">check adjacent distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29704"></span>7408</td>
+<td class="instruction">CALL NC,<a href="28956.html">PathFinder_Update</a></td>
+<td class="comment-1" rowspan="1">if $02 (FRIEND) &gt;= adjacent distance, update distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29707"></span>740B</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to adjacent #1 address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29708"></span>740C</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">check adjacent distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29709"></span>740D</td>
+<td class="instruction">CALL NC,<a href="28956.html">PathFinder_Update</a></td>
+<td class="comment-1" rowspan="1">if $02 (FRIEND) &gt;= adjacent distance, update distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29712"></span>7410</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="4">move <span class="register">HL</span> to adjacent #5 address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29713"></span>7411</td>
+<td class="instruction">INC L</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29714"></span>7412</td>
+<td class="instruction">INC L</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29715"></span>7413</td>
+<td class="instruction">INC L</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29716"></span>7414</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">check adjacent distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29717"></span>7415</td>
+<td class="instruction">CALL NC,<a href="28956.html">PathFinder_Update</a></td>
+<td class="comment-1" rowspan="1">if $02 (FRIEND) &gt;= adjacent distance, update distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29720"></span>7418</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to adjacent #6 address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29721"></span>7419</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">check adjacent distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29722"></span>741A</td>
+<td class="instruction">CALL NC,<a href="28956.html">PathFinder_Update</a></td>
+<td class="comment-1" rowspan="1">if $02 (FRIEND) &gt;= adjacent distance, update distance</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29725"></span>741D</td>
+<td class="instruction">LD B,IYl</td>
+<td class="comment-1" rowspan="1">restore current position in <span class="register">B</span></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="29727"></span>741F</td>
+<td class="instruction">JP <a href="29237.html#29253">Path_Finder_Neighbors</a></td>
+<td class="comment-1" rowspan="1">continue processing neighbors</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29669.html">73E5</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29699">Map</a></td>
+<td class="next">
+Next: <a href="29730.html">7422</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

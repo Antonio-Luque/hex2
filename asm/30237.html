@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 761D</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30165.html">75D5</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30237">Map</a></td>
+<td class="next">
+Next: <a href="30288.html">7650</a>
+</td>
+</tr>
+</table>
+<div class="description">761D: Timer Interrupt</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="23713.html">JUMP_INT</a> and <a href="27648.html">Main_Entry</a>.
+</div>
+<div class="paragraph">
+Interrupt routine to manage players' timers.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Timer_Interrupt</td>
+<td class="address-2"><span id="30237"></span>761D</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">store <span class="register">AF</span> register</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30238"></span>761E</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">store <span class="register">BC</span>, <span class="register">DE</span> and <span class="register">HL</span> registers</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30239"></span>761F</td>
+<td class="instruction">LD A,($62E9)</td>
+<td class="comment-1" rowspan="1">check <a href="25321.html">TIMER_FLAG</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30242"></span>7622</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is timer stopped?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30243"></span>7623</td>
+<td class="instruction">JP Z,<a href="30237.html#30284">Timer_Exit</a></td>
+<td class="comment-1" rowspan="1">yes, exit routine</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30246"></span>7626</td>
+<td class="instruction">LD HL,$62ED</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to <a href="25322.html#25325">RED_TIMER</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30249"></span>7629</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">is red timer on?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30250"></span>762A</td>
+<td class="instruction">JP NZ,<a href="30237.html#30256">Timer_Counters</a></td>
+<td class="comment-1" rowspan="1">yes, check interrupt counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30253"></span>762D</td>
+<td class="instruction">LD HL,$62EA</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to <a href="25322.html">CYAN_TIMER</a> address</td>
+</tr>
+<tr>
+<td class="asm-label">Timer_Counters</td>
+<td class="address-2"><span id="30256"></span>7630</td>
+<td class="instruction">DEC (HL)</td>
+<td class="comment-1" rowspan="1">decrement interrupt counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30257"></span>7631</td>
+<td class="instruction">JP NZ,<a href="30237.html#30284">Timer_Exit</a></td>
+<td class="comment-1" rowspan="1">if not 0, exit routine</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30260"></span>7634</td>
+<td class="instruction">LD (HL),$32</td>
+<td class="comment-1" rowspan="1">restart interrupt counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30262"></span>7636</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to seconds counter address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30263"></span>7637</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">increment seconds counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30265"></span>7639</td>
+<td class="instruction">ADD A,(HL)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30266"></span>763A</td>
+<td class="instruction">DAA</td>
+<td class="comment-1" rowspan="1">convert to BCD (Binary-Coded-Decimal)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30267"></span>763B</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">store seconds</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30268"></span>763C</td>
+<td class="instruction">CP $60</td>
+<td class="comment-1" rowspan="1">60 seconds reached?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30270"></span>763E</td>
+<td class="instruction">JP NZ,<a href="30237.html#30281">Timer_Show</a></td>
+<td class="comment-1" rowspan="1">no, show timer</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30273"></span>7641</td>
+<td class="instruction">LD (HL),$00</td>
+<td class="comment-1" rowspan="1">restart seconds counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30275"></span>7643</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">move <span class="register">HL</span> to minutes counter address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30276"></span>7644</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">increment minutes counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30278"></span>7646</td>
+<td class="instruction">ADD A,(HL)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30279"></span>7647</td>
+<td class="instruction">DAA</td>
+<td class="comment-1" rowspan="1">convert to BCD (Binary-Coded-Decimal)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30280"></span>7648</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">store minutes</td>
+</tr>
+<tr>
+<td class="asm-label">Timer_Show</td>
+<td class="address-2"><span id="30281"></span>7649</td>
+<td class="instruction">CALL <a href="30288.html">Timer_Display</a></td>
+<td class="comment-1" rowspan="1">display timer on the screen</td>
+</tr>
+<tr>
+<td class="asm-label">Timer_Exit</td>
+<td class="address-2"><span id="30284"></span>764C</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">restore <span class="register">BC</span>, <span class="register">DE</span> and <span class="register">HL</span> registers</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30285"></span>764D</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">restore <span class="register">AF</span> register</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30286"></span>764E</td>
+<td class="instruction">EI</td>
+<td class="comment-1" rowspan="1">enable interrupts</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30287"></span>764F</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30165.html">75D5</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30237">Map</a></td>
+<td class="next">
+Next: <a href="30288.html">7650</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

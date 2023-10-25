@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Routine at 7781</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30530.html">7742</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30593">Map</a></td>
+<td class="next">
+Next: <a href="30662.html">77C6</a>
+</td>
+</tr>
+</table>
+<div class="description">7781: Draw Screen Frame</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="31092.html">Screen_Menu</a> and <a href="27677.html">Main_Start</a>.
+</div>
+<div class="paragraph">
+Draw the screen frame on the screen.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Frame</td>
+<td class="address-2"><span id="30593"></span>7781</td>
+<td class="instruction">LD DE,$6229</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="25115.html#25129">STR_LEVELTEXT</a> address ("Level")</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30596"></span>7784</td>
+<td class="instruction">LD HL,$4009</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to screen address of the string</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30599"></span>7787</td>
+<td class="instruction">CALL <a href="28505.html">Print_String</a></td>
+<td class="comment-1" rowspan="1">print "Level"</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30602"></span>778A</td>
+<td class="instruction">CALL <a href="30662.html">Screen_Vertical_Bars</a></td>
+<td class="comment-1" rowspan="1">draw the vertical bars of frame</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30605"></span>778D</td>
+<td class="instruction">LD BC,$628E</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span> points to <a href="25230.html">FRAME_MAP</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30608"></span>7790</td>
+<td class="instruction">LD HL,$4000</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to the screen address of the up-border</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30611"></span>7793</td>
+<td class="instruction">CALL <a href="30593.html#30617">Screen_Frame_Border</a></td>
+<td class="comment-1" rowspan="1">draw up-border</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30614"></span>7796</td>
+<td class="instruction">LD HL,$50E0</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to the screen address of the bottom-border</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Frame_Border</td>
+<td class="address-2"><span id="30617"></span>7799</td>
+<td class="instruction">LD IXl,$20</td>
+<td class="comment-1" rowspan="1">border width in bytes (loop counter)</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Frame_Loop</td>
+<td class="address-2"><span id="30620"></span>779C</td>
+<td class="instruction">LD A,(BC)</td>
+<td class="comment-1" rowspan="1">get tile index</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30621"></span>779D</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="1">is it -1?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30623"></span>779F</td>
+<td class="instruction">JR Z,<a href="30593.html#30631">Screen_Frame_Next</a></td>
+<td class="comment-1" rowspan="1">yes, there is no tile to print</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30625"></span>77A1</td>
+<td class="instruction">LD DE,$650E</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span> points to <a href="25870.html">FRAME_TILES</a> address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30628"></span>77A4</td>
+<td class="instruction">CALL <a href="28517.html#28520">Print_Tile</a></td>
+<td class="comment-1" rowspan="1">print frame tile</td>
+</tr>
+<tr>
+<td class="asm-label">Screen_Frame_Next</td>
+<td class="address-2"><span id="30631"></span>77A7</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span> points to the next screen address (next column)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30632"></span>77A8</td>
+<td class="instruction">INC BC</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span> points to the next tile index</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30633"></span>77A9</td>
+<td class="instruction">DEC IXl</td>
+<td class="comment-1" rowspan="1">decrement loop counter</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30635"></span>77AB</td>
+<td class="instruction">JR NZ,<a href="30593.html#30620">Screen_Frame_Loop</a></td>
+<td class="comment-1" rowspan="1">repeat for each tile</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30637"></span>77AD</td>
+<td class="instruction">LD IX,$5807</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to the "concave left" tile attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30641"></span>77B1</td>
+<td class="instruction">LD (IX+$00),$08</td>
+<td class="comment-1" rowspan="1">color tile (BLUE PAPER)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30645"></span>77B5</td>
+<td class="instruction">LD (IX+$0A),$08</td>
+<td class="comment-1" rowspan="1">color "concave right" tile</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30649"></span>77B9</td>
+<td class="instruction">LD IX,$5AF1</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span> points to the "convex left" tile attribute address</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30653"></span>77BD</td>
+<td class="instruction">LD (IX+$00),$01</td>
+<td class="comment-1" rowspan="1">color tile (BLUE INK)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30657"></span>77C1</td>
+<td class="instruction">LD (IX+$04),$01</td>
+<td class="comment-1" rowspan="1">color "convex right" tile</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="30661"></span>77C5</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30530.html">7742</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30593">Map</a></td>
+<td class="next">
+Next: <a href="30662.html">77C6</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>
