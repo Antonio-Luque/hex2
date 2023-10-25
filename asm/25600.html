@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Data at 6400</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-b">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Data</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="25344.html">6300</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#25600">Map</a></td>
+<td class="next">
+Next: <a href="25751.html">6497</a>
+</td>
+</tr>
+</table>
+<div class="description">6400: Red Boards</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Initialized by the routine at <a href="28931.html">PathFinder_CopyPositions</a>. Read by the routines at <a href="29826.html">PathFinder_RedScore</a>, <a href="29875.html">PathFinder_CyanScore</a>, <a href="30056.html">Candidates_Winner</a>, <a href="30056.html#30067">Candidates_Defeat</a>, <a href="29988.html">PathFinder_Candidates</a>, <a href="29937.html">PathFinder_Potentials</a>, <a href="29109.html">PathFinder_Red_LeftRight</a>, <a href="29175.html">PathFinder_Red_RightLeft</a>, <a href="29237.html">Path_Finder</a>, <a href="29303.html">Path_Finder_Adjnt</a>, <a href="29328.html">PathFinder_RED_Edge_0</a>, <a href="29374.html">PathFinder_RED_Edge_1</a>, <a href="29412.html">PathFinder_RED_Edge_2</a>, <a href="29450.html">PathFinder_RED_Edge_3</a>, <a href="29488.html">PathFinder_RED_Edge_4</a>, <a href="29526.html">PathFinder_RED_Edge_5</a>, <a href="29564.html">PathFinder_RED_Edge_6</a> and <a href="30112.html">PathFinder_VictoryPath</a>. Updated by the routines at <a href="28956.html">PathFinder_Update</a> and <a href="30143.html">PathFinder_PrepareBoard</a>.
+</div>
+<div class="paragraph">
+These boards hold a determined position of the board from red perspective. They are used to calculate RED "two- distance" (Jack van Rijswijck) from LEFT to RIGHT edges and RED two-distance from RIGHT to LEFT edges. The red LEFT-RIGHT board is also used to store RED potentials.
+</div>
+<div class="paragraph">
+The values of $7F form the border of the board. The LEFT-RIGHT edges are identified with Bit 7 set and the lowest 3 bits are the edge number. The rest of bytes indicates "two-distance" from goal (stored in lowest 6 bits), and a flag that indicates a position occupied by a friendly token (stored in 6th bit).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">RED_BOARD_LEFT_RIGHT</td>
+<td class="address-1"><span id="25600"></span>6400</td>
+<td class="instruction">DEFB $7F,$7F,$7F,$7F,$7F,$7F,$7F,$7F</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25608"></span>6408</td>
+<td class="instruction">DEFB $7F,$00,$00,$00,$00,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25616"></span>6410</td>
+<td class="instruction">DEFB $80,$7F,$00,$00,$00,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25624"></span>6418</td>
+<td class="instruction">DEFB $00,$81,$7F,$00,$00,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25632"></span>6420</td>
+<td class="instruction">DEFB $00,$00,$82,$7F,$00,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25640"></span>6428</td>
+<td class="instruction">DEFB $00,$00,$00,$83,$7F,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25648"></span>6430</td>
+<td class="instruction">DEFB $00,$00,$00,$00,$84,$7F,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25656"></span>6438</td>
+<td class="instruction">DEFB $00,$00,$00,$00,$00,$85,$7F,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25664"></span>6440</td>
+<td class="instruction">DEFB $00,$00,$00,$00,$00,$00,$86,$7F</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25672"></span>6448</td>
+<td class="instruction">DEFB $7F,$7F,$7F,$7F,$7F,$7F,$7F,$7F</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label">RED_BOARD_RIGHT_LEFT</td>
+<td class="address-1"><span id="25680"></span>6450</td>
+<td class="instruction">DEFB $80,$00,$00,$00,$00,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25688"></span>6458</td>
+<td class="instruction">DEFB $7F,$81,$00,$00,$00,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25696"></span>6460</td>
+<td class="instruction">DEFB $00,$7F,$82,$00,$00,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25704"></span>6468</td>
+<td class="instruction">DEFB $00,$00,$7F,$83,$00,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25712"></span>6470</td>
+<td class="instruction">DEFB $00,$00,$00,$7F,$84,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25720"></span>6478</td>
+<td class="instruction">DEFB $00,$00,$00,$00,$7F,$85,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25728"></span>6480</td>
+<td class="instruction">DEFB $00,$00,$00,$00,$00,$7F,$86,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25736"></span>6488</td>
+<td class="instruction">DEFB $00,$00,$00,$00,$00,$00,$7F,$7F</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="25744"></span>6490</td>
+<td class="instruction">DEFB $7F,$7F,$7F,$7F,$7F,$7F,$7F</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="25344.html">6300</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#25600">Map</a></td>
+<td class="next">
+Next: <a href="25751.html">6497</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>

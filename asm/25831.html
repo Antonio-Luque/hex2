@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex2: Data at 64E7</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+</head>
+<body class="Asm-w">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html">Hex2</a></td>
+<td class="page-header">Data</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="25751.html">6497</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#25831">Map</a></td>
+<td class="next">
+Next: <a href="25855.html">64FF</a>
+</td>
+</tr>
+</table>
+<div class="description">64E7: Tone Parameters</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Read by the routines at <a href="30837.html">Screen_Last_Level</a>, <a href="27958.html">Main_GetPlayer_Move</a>, <a href="27779.html">Main_Match_Loop</a> and <a href="30165.html">PathFinder_BrightPath</a>.
+</div>
+<div class="paragraph">
+Tone parameters for sound effects.
+</div>
+<div class="paragraph">
+<table class="default">
+<tr>
+<th colspan="1" rowspan="1">Word</th>
+<th colspan="1" rowspan="1">Contents</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">0</td>
+<td class="" colspan="1" rowspan="1">Number of frames in the block, slide changes applied once per frame (1..65536)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">1</td>
+<td class="" colspan="1" rowspan="1">Length of a frame (1..65536)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">2</td>
+<td class="" colspan="1" rowspan="1">Tone pitch, lower numbers for lower tone (1..65536)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">3</td>
+<td class="" colspan="1" rowspan="1">Pitch slide, this value is added to pitch every frame (-32768..32767)</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">TOKEN_FX</td>
+<td class="address-1"><span id="25831"></span>64E7</td>
+<td class="instruction">DEFW $0001,$03E8,$0578,$0000</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label">WINNER_FX</td>
+<td class="address-1"><span id="25839"></span>64EF</td>
+<td class="instruction">DEFW $0005,$1388,$00C8,$0064</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label">FILLED_FX</td>
+<td class="address-1"><span id="25847"></span>64F7</td>
+<td class="instruction">DEFW $03E8,$000A,$0064,$0000</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="25751.html">6497</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#25831">Map</a></td>
+<td class="next">
+Next: <a href="25855.html">64FF</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">By Antonio Luque (2023).</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.10.</div>
+</footer>
+</body>
+</html>
