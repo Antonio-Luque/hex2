@@ -1,0 +1,16 @@
+[Game]
+Copyright=By Antonio Luque (2023).
+
+[MemoryMap:MemoryMap]
+PageByteColumns=0
+
+[MemoryMap:DataMap]
+LengthColumn=1
+PageByteColumns=0
+
+[MemoryMap:UnusedMap]
+LengthColumn=1
+PageByteColumns=0
+
+[MemoryMap:GameStatusBuffer]
+EntryDescriptions=0
