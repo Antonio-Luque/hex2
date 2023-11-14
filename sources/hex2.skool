@@ -1488,7 +1488,7 @@ c$6F65 LD DE,$6800     ; #REGde points to #R$6900-256 address
 ; .
 ; Adapted for Hex game by Einar Saukas.
 ;
-; I:A Speccy side: $02 (FRIEND) or $7F (ENEMY)
+; I:A Speccy side: $02 (FRIEND) or $7E (ENEMY)
 ;   IX #R$7F00 address
 ; O:E Selected position (speccy move)
 @label=*BRAINIAC_best_move
