@@ -2924,6 +2924,7 @@ c$7524 LD (IX+$00),$00 ; set candidates endmarker
  $7547 JP NZ,$754F     ; no, skip to next potential
  $754A INC IXl         ; {yes, insert candidate
  $754C LD (IX+$00),L   ; }
+@label=Candidates_2ndBest_Next
 *$754F INC L           ; move #REGhl to next board potential address
  $7550 DJNZ $7546      ; repeat for each cell                   
  $7552 LD A,IXl        ; #REGa=current candidates position
