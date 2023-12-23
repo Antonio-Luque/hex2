@@ -5,7 +5,7 @@
 ; This address belongs to the calculator's memory area and it is pointed by #REGiy+$67 after Spectrum start.
 ; .
 ; After #R$6C00 initialization this address stores the instruction 'JP #R$761D' and the interrupt vector address located at $2EFF.
-; The value pointed at #HTML(<a href="https://skoolkid.github.io/rom/asm/2DE3.html#2EEF" target="_blank">ROM address $2EFF</a>) is $5CA1.
+; The value pointed at #HTML(<a href="https://skoolkid.github.io/rom/asm/2DE3.html#2EFE" target="_blank">ROM address $2EFF</a>) is $5CA1.
 @label=JUMP_INT
 c$5CA1 DEFB $00,$00,$00
 
